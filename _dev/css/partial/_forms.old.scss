@@ -1,0 +1,127 @@
+/*.gform_wrapper {
+	@extend .well;
+}*/
+
+.gform_fields {
+	@extend .list-unstyled;
+	@extend .row;
+
+	input, select, textarea {
+		@extend .form-control;
+		font-weight: 300;
+	}
+
+	textarea {
+		height: auto;
+	}
+
+	.gfield {
+		@extend .col-xs-12;
+	}
+
+	input[ type="file" ] {
+		background: none;
+		border:     none;
+		box-shadow: none;
+		padding:    6px 0;
+	}
+
+}
+
+.gform_heading {
+	margin: 0 0 20px;
+
+	.gform_description {
+		font-size:   $font-size-large;
+		font-weight: 300;
+	}
+}
+
+.gfield_description {
+	font-size:   $font-size-small;
+	font-weight: 300;
+	padding: 5px 0 0;
+}
+
+.validation_error {
+	@extend .alert;
+	@extend .alert-danger;
+}
+
+.validation_message {
+	@extend .alert;
+	@extend .alert-success;
+}
+
+.gform_button {
+	@extend .btn;
+	@extend .btn-primary;
+}
+
+.gfield_required {
+	color: $alert-danger-text;
+}
+.gfield_checkbox,
+.gfield_radio {
+	margin:        0;
+	padding:       0 0 0 20px;
+	display:       block;
+
+	li {
+		list-style: none;
+
+		label {
+			font-weight:  300;
+			min-height:   27px;
+			padding-left: 10px;
+			position:     relative;
+
+			input {
+				background-color: #fff;
+				box-shadow:       none;
+				border:           none;
+				border-radius:    0;
+				color:            #555;
+				display:          block;
+				font-size:        18px;
+				height:           18px;
+				line-height:      1.428571429;
+				left:             0;
+				margin:           5px 0 0 -20px;
+				padding:          0;
+				position:         absolute;
+				top:              0;
+				transition:       none;
+				vertical-align:   middle;
+				width:            18px;
+			}
+		}
+	}
+}
+.gform_validation_container {
+	display: none;
+}
+
+.gfield_error .ginput_container {
+	margin-bottom: 10px;
+}
+
+.ginput_complex {
+	label {
+		font-size: $font-size-small;
+		font-weight: 500;
+	}
+}
+
+.ginput_container_fileupload {
+	#extensions_message_2_9 {
+		font-size: $font-size-small;
+		font-weight: 300;
+	}
+}
+
+.error-page-search {
+	input[ type="text" ] {
+		font-weight: 300;
+	}
+}

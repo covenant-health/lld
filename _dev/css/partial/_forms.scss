@@ -1,0 +1,150 @@
+.gform_fields {
+	@extend .list-unstyled;
+	@extend .row;
+
+	.gfield {
+		margin-bottom: 15px;
+
+		&.gfield_visibility_hidden {
+			display: none;
+		}
+
+		&.hidden_label {
+			label.gfield_label {
+				display: none;
+			}
+		}
+
+		> label {
+			font-size:     $font-size-small;
+			font-weight:   600;
+			margin-bottom: 0;
+			margin-bottom: 0;
+
+			> .gfield_required {
+				color:        $brand-red;
+				padding-left: 2px;
+			}
+		}
+
+		input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+			@extend .form-control;
+			font-weight:   300;
+			border-radius: $border-radius-small;
+			font-size:     $font-size-small;
+
+			&::placeholder {
+				font-weight: 300 !important;
+			}
+		}
+
+		&.gsection {
+			h2 {
+				margin: ceil(($line-height-computed / 2)) 0 0;
+			}
+
+			&:not(:first-of-type) {
+				h2 {
+					border-top:  1px solid $gray-lighter;
+					padding-top: 28px;
+				}
+			}
+		}
+	}
+}
+
+.gfield_html {
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.gform_button {
+	@extend .btn;
+	@extend .btn-primary;
+	margin-bottom: 15px;
+}
+
+.gfield_checkbox {
+	margin:          0;
+	padding:         0;
+	list-style-type: none;
+
+	li {
+		&:not(:only-of-type),
+		&:not(:last-of-type) {
+			margin-bottom: 10px;
+		}
+	}
+
+	label {
+		font-size:     $font-size-base;
+		font-weight:   300;
+		margin-bottom: 0;
+		position:      relative;
+		padding-left:  35px;
+		cursor:        pointer;
+
+		&:after {
+			clear:   both;
+			content: '';
+			display: table;
+		}
+
+		input[type="checkbox"] {
+			display: none;
+
+			+ .cr {
+				position: absolute;
+				top:      0;
+				left:     0;
+
+				> .cr-icon {
+					transform:  scale(3) rotateZ(-20deg);
+					opacity:    0;
+					transition: all $speed $easing;
+				}
+			}
+
+			&:checked {
+				+ .cr {
+					background: $brand-primary;
+					color:      #fff;
+
+					> .cr-icon {
+						transform: scale(1) rotateZ(0deg);
+						opacity:   1;
+					}
+				}
+			}
+
+			&:disabled {
+				+ .cr {
+					> .cr-icon {
+						opacity: .5;
+					}
+				}
+			}
+		}
+	}
+
+	.cr {
+		border:        2px solid $brand-primary;
+		position:      relative;
+		display:       inline-block;
+		border-radius: $border-radius-small;
+		width:         $font-size-large;
+		height:        $font-size-large;
+		float:         left;
+		margin-right:  ceil(($line-height-computed / 2));
+
+		.cr-icon {
+			position:    absolute;
+			font-size:   .8em;
+			line-height: 0;
+			top:         50%;
+			left:        15%;
+		}
+	}
+}
+

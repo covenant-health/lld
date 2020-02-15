@@ -1,0 +1,215 @@
+$brand-border: 1px solid $brand-primary;
+
+.jumbotron {
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: $brand-border;
+
+	&.upper-masthead {
+		margin-bottom: 0;
+
+		.row {
+			position: relative;
+
+			.masthead-copy-area {
+				position:   absolute;
+				bottom:     0;
+				right:      0;
+				text-align: right;
+
+				h2 {
+					color:       #fff;
+					font-size:   ceil( ( $font-size-h1 * 1.45 ) );
+					font-weight: 500;
+					margin:      0;
+					@include text-shadow;
+				}
+
+				p {
+					color: #fff;
+					margin-bottom: 0;
+					@include text-shadow;
+
+					a {
+						color: #fff;
+						font-weight: 500;
+
+						&:active,
+						&:focus,
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+
+			.masthead-quick-links {
+				@include quick-links;
+			}
+		}
+	}
+
+	&.lower-masthead {
+		border-top: $brand-border;
+	}
+
+	&.landing-masthead {
+		background-position: center center;
+
+		.row {
+			position: relative;
+		}
+
+		h1 {
+			color: #fff;
+			margin-bottom: 0;
+			@include text-shadow;
+		}
+
+		& .masthead-copy-area {
+			position:   absolute;
+			bottom:     0;
+			right:      0;
+
+			h2,
+			p {
+				color: #fff;
+				margin-bottom: 0;
+				@include text-shadow;
+			}
+
+			h2 {
+				font-size:   ceil( ( $font-size-h1 * 1.4 ) );
+				font-weight: 500;
+				line-height: 0.8;
+			}
+
+			p {
+				font-size: ceil( ( $font-size-base * 1.75 ) );
+				line-height: 1;
+				margin-top: 13px;
+
+				a {
+					color: #fff;
+					font-weight: 500;
+
+					&:active,
+					&:hover,
+					&:focus {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+
+		& .masthead-quick-links {
+			@include quick-links;
+		}
+	}
+
+	@media #{ $small } {
+		&.upper-masthead {
+			.row {
+				.masthead-copy-area {
+					h2 {
+						font-size:   ceil( ( $font-size-h1 * 1.45 ) );
+					}
+				}
+			}
+		}
+
+		&.landing-masthead {
+			h1 {
+				font-size: ceil( ( $font-size-h1 * 1.4 ) );
+			}
+
+			& .masthead-copy-area {
+				h2,
+				p {
+					color: #fff;
+					margin-bottom: 0;
+					@include text-shadow;
+				}
+
+				h2 {
+					font-size:   ceil($font-size-h1 * 1.4);
+				}
+
+				p {
+					font-size: ceil( ( $font-size-base * 2 ) );
+				}
+			}
+		}
+	}
+
+	@media #{ $xsmall } {
+		&.upper-masthead {
+			background:      url('img/front-page-assets/masthead-mobile-default-201.jpg') center top no-repeat !important;
+			background-size: cover !important;
+		}
+	}
+
+	@media #{ $xsmall } and #{ $highdpi } {
+		&.upper-masthead {
+			background:      url('img/front-page-assets/masthead-mobile-default-201@2x.jpg') center top no-repeat !important;
+			background-size: cover !important;
+		}
+	}
+
+	@media #{ $medium } {
+		/*&.upper-masthead {
+			.row {
+				.masthead-copy-area {
+					h2 {
+						font-size:   ceil( ( $font-size-h1 * 1.45 ) );
+					}
+				}
+			}
+		}*/
+
+		&.landing-masthead {
+			h1 {
+				font-size: ceil( ( $font-size-h1 * 1.8 ) );
+			}
+
+			& .masthead-copy-area {
+				h2 {
+					font-size: ceil( ( $font-size-h1 * 2 ) );
+				}
+
+				p {
+					font-size: ceil( ( $font-size-base * 2.2 ) );
+				}
+			}
+		}
+	}
+
+	@media #{ $large } {
+		/*&.upper-masthead {
+			.row {
+				.masthead-copy-area {
+					h2 {
+						font-size:   ceil( ( $font-size-h1 * 1.45 ) );
+					}
+				}
+			}
+		}*/
+
+		&.landing-masthead {
+			h1 {
+				font-size: ceil( ( $font-size-h1 * 1.8 ) );
+			}
+
+			& .masthead-copy-area {
+				h2 {
+					font-size: ceil( ( $font-size-h1 * 2.4 ) );
+				}
+
+				p {
+					font-size: ceil( ( $font-size-base * 2.2 ) );
+					margin-top: 20px;
+				}
+			}
+		}
+	}
+}

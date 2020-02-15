@@ -1,0 +1,54 @@
+.top-links {
+	margin:     0;
+	padding:    0;
+	text-align: right;
+
+	li {
+		border-right: 1px solid $brand-primary;
+		display:      inline;
+		list-style:   none;
+		margin:       0 3px 0 0;
+		padding:      15px 10px 2px 0;
+
+		&:last-of-type {
+			border:        0;
+			margin-right:  0;
+			padding-right: 0;
+		}
+
+		a {
+			color:           $brand-primary;
+			font-size:       14px;
+			font-weight:     400;
+			line-height:     1;
+			padding-top:     10px;
+			text-decoration: none;
+
+			&:active,
+			&:focus,
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+@media #{ $xsmall } {
+	.top-links {
+		margin-bottom: 20px;
+
+		li {
+			a {
+				font-size: 12px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 375px) {
+	.top-links {
+		li {
+			a {
+				font-size: 11px;
+			}
+		}
+	}
+}

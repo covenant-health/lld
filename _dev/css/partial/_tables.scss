@@ -1,0 +1,67 @@
+// Normal tables
+table {
+	margin-bottom: $line-height-computed;
+	max-width:     100%;
+	min-height:    0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+	overflow-x:    auto;
+	width:         100%;
+
+	> thead,
+	> tbody,
+	> tfoot {
+		> tr {
+			> th,
+			> td {
+				border-top:     1px solid $table-border-color;
+				line-height:    $line-height-base;
+				padding:        $table-cell-padding;
+				vertical-align: top;
+			}
+		}
+	}
+
+	> thead {
+		> tr {
+			> td {
+				border-bottom:  2px solid $table-border-color;
+				color:          $brand-primary;
+				font-weight:    500;
+				vertical-align: bottom;
+			}
+		}
+	}
+
+	// Remove top border from thead by default
+	> caption + thead,
+	> colgroup + thead,
+	> thead:first-child {
+		> tr:first-child {
+			> th,
+			> td {
+				border-top: 0;
+			}
+		}
+	}
+
+	// Account for multiple tbody instances
+	> tbody {
+		+ tbody {
+			border-top: 2px solid $table-border-color;
+		}
+
+		> tr {
+			&:nth-of-type(odd) {
+				background-color: $table-bg-accent;
+			}
+
+			&:hover {
+				background-color: $table-bg-hover;
+			}
+
+			> td {
+				font-weight: 300;
+				vertical-align: top;
+			}
+		}
+	}
+}

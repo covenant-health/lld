@@ -1,0 +1,30 @@
+<?php
+/**
+ * Template Name: Landing Page with Hero Image
+ * Version    : 1.2.0
+ * Author     : John Galyon
+ * Author URI : http://www.covenanthealth.com
+ * @version 2.0.0
+ * @package WordPress
+ * @subpackage covenant
+ */
+get_header(); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+
+	<?php get_template_part( 'partial/content', 'masthead' ); ?>
+
+	<main class="container">
+		<?php get_template_part( 'partial/content', 'breadcrumbs' ); ?>
+		<?php get_template_part( 'partial/content', 'lead' ); ?>
+		<div class="row post-content">
+			<?php if( get_field( 'contact_area' ) ) : ?>
+				<aside class="col-xs-12 col-md-4 pull-right" role="complementary">
+					<div class="well">
+						<?php the_field( 'contact_area' ); ?>
+					</div>
+				</aside>
+			<?php endif; ?>
+			<?php get_template_part( 'partial/content', 'article' ); ?>
+		</div>
+	</main>
+
+<?php endwhile; endif; get_footer(); ?>

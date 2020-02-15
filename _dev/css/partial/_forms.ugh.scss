@@ -1,0 +1,462 @@
+.gform_fields {
+	@extend .list-unstyled;
+	@extend .row;
+	margin-left: -15px;
+	margin-right: -15px;
+
+	.gfield {
+		//@extend .col-xs-12;
+		margin-bottom: 15px;
+
+		&.gfield_visibility_hidden,
+		.ginput_product_price_label {
+			display: none !important;
+		}
+
+		&.gf_contribution_total {
+			.gfield_label {
+				@extend h5;
+				margin: 0;
+			}
+
+			.ginput_container_product_calculation {
+				margin-top: 15px;
+			}
+
+			.ginput_product_price,
+			.ginput_total {
+				@extend h4;
+			}
+		}
+
+		&.hidden_label {
+			label.gfield_label {
+				display: none;
+			}
+		}
+
+		> label {
+			font-size:     $font-size-small;
+			font-weight:   600;
+			margin-bottom: 0;
+			margin-bottom: 0;
+
+			> .gfield_required {
+				color:        $brand-red;
+				padding-left: 2px;
+			}
+		}
+
+		input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+			@extend .form-control;
+			font-weight:   300;
+			border-radius: $border-radius-small;
+			font-size:     $font-size-small;
+
+			&::placeholder {
+				font-weight: 300 !important;
+			}
+		}
+
+		&.gsection {
+			h2 {
+				margin: ceil(($line-height-computed / 2)) 0 0;
+			}
+
+			&:not(:first-of-type) {
+				h2 {
+					border-top:  1px solid $gray-lighter;
+					padding-top: 28px;
+				}
+			}
+		}
+
+		&.gf_credit_card_number {
+			@extend .col-xs-6;
+			@extend .col-sm-4;
+		}
+
+		&.gf_credit_card_expiry,
+		&.gf_credit_card_security {
+			@extend .col-xs-3;
+			@extend .col-sm-2;
+		}
+
+		&.gf_credit_card_holder {
+			@extend .col-xs-12;
+			@extend .col-sm-4;
+		}
+
+		.ginput_complex {
+			@extend .row;
+
+			.gfield & {
+				margin-bottom: -15px !important;
+			}
+
+			span {
+				margin-bottom: 15px;
+
+				> label {
+					font-size:     $font-size-small;
+					font-weight:   600;
+					margin-bottom: 0;
+					margin-bottom: 0;
+
+					> .gfield_required {
+						color:        $brand-red;
+						padding-left: 2px;
+					}
+				}
+
+				&.address_line_1,
+				&.address_line_2{
+					@extend .col-sm-6;
+				}
+				&.address_city {
+					@extend .col-sm-7;
+				}
+				&.address_state {
+					@extend .col-sm-3;
+				}
+				&.address_zip {
+					@extend .col-sm-2;
+				}
+			}
+
+			&.ginput_container_creditcard {
+				.ginput_full {
+					@extend .col-xs-12;
+
+					> label {
+						font-size:     $font-size-small;
+						font-weight:   600;
+						margin-bottom: 0;
+						margin-bottom: 0;
+
+						> .gfield_required {
+							color:        $brand-red;
+							padding-left: 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.gfield_html {
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.gform_button {
+	@extend .btn;
+	@extend .btn-primary;
+	margin-bottom: 15px;
+}
+
+.gfield_checkbox {
+	margin:          0;
+	padding:         0;
+	list-style-type: none;
+
+	li {
+		&:not(:only-of-type),
+		&:not(:last-of-type) {
+			margin-bottom: 10px;
+		}
+	}
+
+	label {
+		font-size:     $font-size-base;
+		font-weight:   300;
+		margin-bottom: 0;
+		position:      relative;
+		padding-left:  35px;
+		cursor:        pointer;
+
+		&:after {
+			clear:   both;
+			content: '';
+			display: table;
+		}
+
+		input[type="checkbox"] {
+			display: none;
+
+			+ .cr {
+				position: absolute;
+				top:      0;
+				left:     0;
+
+				> .cr-icon {
+					transform:  scale(3) rotateZ(-20deg);
+					opacity:    0;
+					transition: all $speed $easing;
+				}
+			}
+
+			&:checked {
+				+ .cr {
+					background: $brand-primary;
+					color:      #fff;
+
+					> .cr-icon {
+						transform: scale(1) rotateZ(0deg);
+						opacity:   1;
+					}
+				}
+			}
+
+			&:disabled {
+				+ .cr {
+					> .cr-icon {
+						opacity: .5;
+					}
+				}
+			}
+		}
+	}
+
+	.cr {
+		border:        2px solid $brand-primary;
+		position:      relative;
+		display:       inline-block;
+		border-radius: $border-radius-small;
+		width:         $font-size-large;
+		height:        $font-size-large;
+		float:         left;
+		margin-right:  ceil(($line-height-computed / 2));
+
+		.cr-icon {
+			position:    absolute;
+			font-size:   .8em;
+			line-height: 0;
+			top:         50%;
+			left:        15%;
+		}
+	}
+}
+
+.gf_contribution_amount {
+	.ginput_container_radio {
+		.gfield_radio {
+			align-items:     flex-start;
+			display:         flex;
+			flex-flow:       row wrap;
+			justify-content: space-between;
+			list-style-type: none;
+			margin:          0;
+			padding:         0;
+
+			input[type=radio] {
+				display: none;
+
+				+ label {
+					background:      lighten($brand-primary, 50%);
+					border-radius:   $border-radius-small;
+					border:          1px solid $brand-primary;
+					color:           $brand-primary;
+					cursor:          pointer;
+					display:         block;
+					float:           none;
+					font-size:       $font-size-large;
+					font-weight:     400;
+					line-height:     1;
+					margin:          0;
+					max-width:       100%;
+					padding:         10px;
+					position:        relative;
+					text-align:      center;
+					text-decoration: none;
+					transition:      $speed $easing all;
+					width:           100%;
+				}
+
+				&:checked {
+					+ label {
+						background: $brand-primary;
+						color:      #fff;
+					}
+				}
+			}
+
+			input[type=text],
+			input[type=number] {
+				background:      #fff !important;
+				border-radius:   $border-radius-small;
+				border:          1px solid $brand-primary !important;
+				color:           $brand-primary !important;
+				cursor:          pointer;
+				display:         block;
+				float:           none;
+				font-size:       $font-size-large !important;
+				font-weight:     400;
+				height:          44px !important;
+				line-height:     1;
+				margin:          0;
+				max-width:       100%;
+				padding:         10px;
+				position:        relative;
+				text-align:      center !important;
+				text-decoration: none;
+				transition:      $speed $easing all;
+				width:           100%;
+
+				&:focus {
+					background: #fff !important;
+					color:      $brand-primary !important;
+				}
+
+				&::placeholder {
+					font-weight: 300 !important;
+				}
+			}
+
+			li {
+				margin-bottom: 0;
+				padding:       0 10px 10px 0;
+				width:         50%;
+
+				&:nth-of-type(2n) {
+					padding: 0 0 0 10px;
+				}
+			}
+		}
+	}
+}
+
+.ginput_container_creditcard {
+
+	.ginput_full {
+		margin-top: ceil($line-height-computed / 2);
+
+		.gfield_description {
+			&.validation_message {
+				@extend .alert;
+				@extend .alert-danger;
+				font-size: $font-size-small;
+				padding:   5px 10px;
+				margin:    5px 0 0;
+			}
+		}
+	}
+}
+
+#input_2_54_5_label {
+	width: 100%;
+}
+
+.gform_validation_error {
+	.gfield_error {
+		.validation_message {
+			@extend .alert;
+			@extend .alert-danger;
+			font-size: $font-size-small;
+			padding:   5px 10px;
+			margin:    5px 0 0;
+		}
+
+		input, select, textarea {
+			border: 1px solid #981e32 !important;
+		}
+	}
+}
+
+.form-mailing-list {
+	.gform_fields {
+		.gfield {
+			label {
+				color: #fff;
+			}
+		}
+	}
+
+	.gform_footer {
+		input[type="submit"] {
+			border: 2px solid #fff;
+		}
+	}
+}
+
+@media #{$small} {
+	.gfield {
+		&.volunteer {
+			.gfield_checkbox {
+				column-count: 2;
+				column-gap:   30px;
+			}
+		}
+	}
+	.gf_contribution_amount {
+		.ginput_container_radio {
+			.gfield_radio {
+				input[type=radio] {
+					display: none;
+
+					+ label {
+						font-size: $font-size-base;
+					}
+				}
+
+				input[type=text],
+				input[type=number] {
+					font-size:  $font-size-base !important;
+					height:     40px !important;
+					padding:    0 !important;
+					text-align: center !important;
+				}
+
+				li {
+					width: 25% !important;
+
+					&:nth-of-type(2n) {
+						padding: 0 10px 10px 0;
+					}
+
+					&:nth-of-type(4n) {
+						padding: 0 0 10px 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media #{$medium} {
+	.gf_contribution_amount {
+		.ginput_container_radio {
+			.gfield_radio {
+				input[type=radio] {
+					display: none;
+
+					+ label {
+						font-size: $font-size-large;
+					}
+				}
+
+				input[type=text],
+				input[type=number] {
+					font-size:  $font-size-large !important;
+					height:     44px !important;
+					padding:    10px !important;
+					text-align: center !important;
+				}
+
+				li {
+					width: 25% !important;
+
+					&:nth-of-type(2n) {
+						padding: 0 10px 10px 0;
+					}
+
+					&:nth-of-type(4n) {
+						padding: 0 0 10px 0;
+					}
+				}
+			}
+		}
+	}
+}
