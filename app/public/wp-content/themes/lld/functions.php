@@ -6,6 +6,6 @@
 
 $files = glob( get_template_directory() . '/inc/*.php' );
 
-foreach( $files as $file ) {
+foreach ( $files as $file ) {
 	include_once( $file );
 }

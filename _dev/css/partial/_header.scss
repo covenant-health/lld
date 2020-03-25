@@ -1,86 +1,56 @@
 header:not( [class] ) {
-	border-bottom: 1px solid $brand-primary;
+	background-color: #ffffff;
+	border-bottom:    1px solid $brand-primary;
 }
 
 .navbar {
 	border-radius: 0;
 	margin-bottom: 0;
-
-	.container {
-		.navbar-brand {
-			display: block;
-			padding-top: 0;
-
-			img {
-				width: 170px;
-				height: auto;
-			}
-		}
-	}
 }
 
 .navbar-default {
-	background: #fff;
-	border: 0;
-
-	.navbar-toggle {
-		background: $brand-primary;
-		border: 0;
-		margin-bottom: 15px;
-		margin-top: 0;
-		overflow: hidden;
-		transition: all $speed $easing;
-
-		&:active,
-		&:focus,
-		&:hover {
-			background: darken( $brand-primary, 10% );
-		}
-
-		.toggle-text {
-			color:          #fff;
-			font-weight:    300;
-			text-transform: uppercase;
-		}
-	}
+	background: transparent;
+	border:     0;
 
 	.navbar-collapse {
-		border: 0;
+		border:     0;
 		border-top: 1px solid $brand-primary;
 	}
 
 	.navbar-nav {
-		margin: 0 -15px;
+		background: #ffffff;
+		margin:     0 -15px;
 
 		> li {
 
 			> a {
 				border-bottom: 1px solid $gray-lighter;
-				color: $brand-primary;
-				font-size: 22px;
-				font-weight: 300;
-				text-align: center;
-				transition: all 300ms ease-in-out;
+				color:         $brand-primary;
+				font-size:     22px;
+				font-weight:   300;
+				text-align:    center;
+				transition:    all 300ms ease-in-out;
 
 				&:active,
 				&:focus,
 				&:hover {
-					background: lighten( $brand-primary, 65% );
-					color: darken( $brand-primary, 10% );
+					background: lighten($brand-primary, 65%);
+					color:      darken($brand-primary, 10%);
 				}
 			}
 		}
 	}
+
 	.navbar-form {
-		border: 0;
-		margin: 0;
-		padding: 15px;
+		border:     0;
+		margin:     0;
+		padding:    15px;
 		transition: all 300ms ease-in-out;
 
 		&:active,
 		&:focus,
 		&:hover {
-			background: lighten( $brand-primary, 65% );
+			background: lighten($brand-primary, 65%);
 		}
 
 		.form-control {
@@ -90,29 +60,110 @@ header:not( [class] ) {
 }
 
 .navbar-header {
-	background: #fff;
-	border: 0;
+	align-content:   space-between;
+	align-items:     flex-end;
+	background:      #ffffff;
+	border:          0;
+	display:         flex;
+	flex-flow:       row nowrap;
+	justify-content: space-between;
+	margin-bottom:   0;
+	margin-top:      0;
+	padding:         15px 0;
+
+	.navbar-brand {
+		display:    block;
+		flex-basis: 100%;
+		margin:     0;
+		order:      1;
+		padding:    0 ($grid-gutter-width / 2);
+
+		img {
+			height: auto;
+			width:  200px;
+		}
+	}
+
+	.navbar-toggle {
+		background:      $brand-primary;
+		border:          0;
+		justify-content: flex-end;
+		margin:          0 15px 0 0;
+		order:           2;
+		overflow:        hidden;
+		padding:         0;
+		transition:      all $speed $easing;
+
+		&:active,
+		&:focus,
+		&:hover {
+			background: darken($brand-primary, 10%);
+		}
+
+		.toggle-text {
+			color:          #ffffff;
+			display:        block;
+			font-weight:    300;
+			margin:         0 auto;
+			padding:        10px 25px 10px 10px;
+			text-align:     center;
+			text-transform: uppercase;
+		}
+	}
 }
 
-@media #{ $small } {
+@media #{$small} {
 	.navbar-default {
-		.navbar-collapse {
-			border-top: 0;
+		.container {
+			align-content:   space-between;
+			align-items:     flex-end;
+			display:         flex;
+			flex-flow:       row nowrap;
+			justify-content: space-between;
+			padding:         15px ($grid-gutter-width / 2) 10px ($grid-gutter-width / 2);
+
+			.navbar-header {
+				display:    block;
+				flex-basis: 200px;
+				margin:     0 0 5px 0;
+				padding:    0;
+			}
 		}
+
+		.navbar-collapse {
+			border:     0;
+			flex-basis: 100%;
+			padding:    0;
+		}
+
 		.navbar-nav {
-			padding: 35px 0 10px 0;
+			align-content:   flex-end;
+			align-items:     stretch;
+			background:      transparent;
+			display:         flex;
+			flex-flow:       row nowrap;
+			justify-content: flex-end;
+			margin:          0;
+
+			> .open {
+				> a {
+					background-color: transparent;
+
+					&:active,
+					&:focus,
+					&:hover {
+						background-color: transparent;
+						color:            darken($brand-primary, 10%);
+					}
+				}
+			}
 
 			> li {
-				margin: 0 0 0 10px;
-
-				&:first-of-type {
-					margin: 0;
-				}
 				> a {
-					border: 0;
-					font-size: 17px;
+					border:      0;
+					font-size:   $font-size-base;
 					font-weight: 400;
-					padding: 0;
+					padding:     0 15px 0 0;
 
 					&:active,
 					&:focus,
@@ -120,114 +171,45 @@ header:not( [class] ) {
 						background: transparent;
 					}
 				}
-			}
 
-			> .open {
+				&:last-of-type {
+					a {
+						padding: 0;
+					}
+				}
 
-				> a {
+				> .dropdown-menu {
+					margin:  0;
+					padding: 0;
+					top:     36px;
+					width:   300px;
 
-					&:focus,
-					&:hover {
-						background: transparent;
-						color: darken( $brand-primary, 10% );
+					.navbar-form {
+						border:  0;
+						margin:  0;
+						padding: 12px 0 12px 12px;
+
+						.input-group {
+							width: 100%;
+						}
+
+						.form-control {
+							font-weight: 300;
+						}
 					}
 				}
 			}
 		}
-		.navbar-form {
-			border: 0;
-			margin: 0;
-			padding: 10px 15px;
-			transition: all 300ms ease-in-out;
-
-			&:active,
-			&:focus,
-			&:hover {
-				background: transparent;
-			}
-
-			.form-control {
-				font-size: 15px;
-				width: 200px;
-			}
-			.input-group-btn {
-				.btn {
-					font-size: 15px;
-					padding: 8px 12px;
-				}
-			}
-		}
-	}
-	.navbar {
-		.container {
-			.navbar-brand {
-				img {
-					width: 165px;
-					height: auto;
-					padding-top: 13px;
-				}
-			}
-		}
-	}
-	.dropdown-menu {
-		top: 35px;
 	}
 }
 
-@media #{ $medium } {
+@media #{$medium} {
 	.navbar-default {
 		.navbar-nav {
-			padding: 40px 0 10px 0;
-
 			> li {
-				margin: 0 0 0 20px;
-
-				&:first-of-type {
-					margin: 0;
-				}
-
 				> a {
-					font-size: 20px;
-				}
-			}
-		}
-	}
-	.navbar {
-		.container {
-			.navbar-brand {
-				img {
-					width: 180px;
-					height: auto;
-				}
-			}
-		}
-	}
-}
-
-@media #{ $large } {
-	.navbar-default {
-		.navbar-nav {
-			padding: 50px 0 10px 0;
-
-			> li {
-				margin: 0 0 0 25px;
-
-				&:first-of-type {
-					margin: 0;
-				}
-
-				> a {
-					font-size: 23px;
-				}
-			}
-		}
-	}
-	.navbar {
-		.container {
-			.navbar-brand {
-				img {
-					width: 220px;
-					height: auto;
+					border:    0;
+					font-size: $font-size-large;
 				}
 			}
 		}

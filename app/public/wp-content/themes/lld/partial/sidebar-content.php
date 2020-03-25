@@ -9,7 +9,7 @@
  * @subpackage covenant
  */
 ?>
-<aside class="col-md-4" role="complementary">
+<aside class="col-xs-12 col-md-4" role="complementary">
 	<?php get_template_part( 'partial/content', 'contact' ); ?>
 	<div class="well">
 		<?php the_field( 'sidebar_content' ); ?>

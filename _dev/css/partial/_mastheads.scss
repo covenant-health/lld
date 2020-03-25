@@ -1,24 +1,24 @@
 .jumbotron {
 	background-position: 25% top;
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding: 0;
+	background-repeat:   no-repeat;
+	background-size:     cover;
+	padding:             0;
 
 	p {
 		&.front-page-cta {
-			text-align: center;
-			color: #fff;
-			font-size: $font-size-large;
+			color:      #ffffff;
+			font-size:  $font-size-large;
 			margin-top: $line-height-computed;
+			text-align: center;
 
 			a {
-				color: #fff;
+				color:           #ffffff;
 				text-decoration: underline;
 
 				&:active,
 				&:focus,
 				&:hover {
-					color: #fff;
+					color: #ffffff;
 				}
 			}
 		}
@@ -26,30 +26,30 @@
 
 	.container {
 		.row {
+			margin:   0 0 ceil(($line-height-computed * 1.5));
 			position: relative;
-			margin: 0 0 ceil(($line-height-computed * 1.5));
 
 			.masthead-quick-links {
 				@include quick-links;
 			}
 
 			.masthead-copy-area {
-				position: absolute;
-				bottom: 0;
-				right: 0;
+				bottom:     0;
+				position:   absolute;
+				right:      0;
 				text-align: left;
 
 				h1,
 				h2 {
-					color: #fff;
-					font-size: ceil(($font-size-h1 * 1.25));
+					color:       #ffffff;
+					font-size:   ceil(($font-size-h1 * 1.25));
 					font-weight: 500;
-					margin-top: 0;
+					margin-top:  0;
 					@include text-shadow;
 				}
 
 				p {
-					color: #fff;
+					color:     #ffffff;
 					font-size: ceil(($font-size-large * 1.25));
 					@include text-shadow;
 
@@ -59,7 +59,7 @@
 					}
 
 					a {
-						color: #fff;
+						color:       #ffffff;
 						font-weight: 500;
 
 						&:active,
@@ -72,25 +72,25 @@
 			}
 
 			.fallback-title {
-				text-align: center;
+				margin:     ceil(($line-height-computed * 3)) 0 ceil(($line-height-computed * 1.25));
 				@include text-shadow;
-				margin: ceil(($line-height-computed * 3)) 0 ceil(($line-height-computed * 1.25));
+				text-align: center;
 
 				h1,
 				h2 {
-					color: #fff;
+					color:     #ffffff;
 					font-size: ceil(($font-size-h1));
-					margin: 0;
+					margin:    0;
 				}
 
 				p {
-					font-size: ceil(($font-size-large * 1.25));
-					color: #fff;
+					color:         #ffffff;
+					font-size:     ceil(($font-size-large * 1.25));
 					margin-bottom: 0;
 					@include text-shadow;
 
 					a {
-						color: #fff;
+						color:       #ffffff;
 						font-weight: 500;
 
 						&:active,
@@ -112,16 +112,6 @@
 
 			.masthead-copy-area {
 				display: none;
-			}
-		}
-
-		.search-form {
-			.input-group {
-				.masthead-search {
-					&::placeholder {
-						font-weight: 300;
-					}
-				}
 			}
 		}
 	}
@@ -164,23 +154,28 @@
 			}
 		}
 	}
+
+	.courses-search-col {
+		left:      50%;
+		transform: translateX(-50%);
+	}
 }
 
 @media #{ $large } {
 	.jumbotron {
 		.container {
 			.row {
+				margin:   0 0 ceil(($line-height-computed * 1.5));
 				position: relative;
-				margin: 0 0 ceil(($line-height-computed * 1.5));
 
 				.masthead-quick-links {
 					@include quick-links;
 				}
 
 				.masthead-copy-area {
-					position: absolute;
-					bottom: 0;
-					right: 0;
+					bottom:     0;
+					position:   absolute;
+					right:      0;
 					text-align: right;
 
 					h1,

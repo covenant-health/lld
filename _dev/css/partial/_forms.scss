@@ -27,11 +27,12 @@
 			}
 		}
 
-		input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+		input:not([type='radio']):not([type='checkbox']), select, textarea {
 			@extend .form-control;
-			font-weight:   300;
 			border-radius: $border-radius-small;
 			font-size:     $font-size-small;
+			font-weight:   300;
+			width:         100%;
 
 			&::placeholder {
 				font-weight: 300 !important;
@@ -66,9 +67,9 @@
 }
 
 .gfield_checkbox {
+	list-style-type: none;
 	margin:          0;
 	padding:         0;
-	list-style-type: none;
 
 	li {
 		&:not(:only-of-type),
@@ -78,12 +79,12 @@
 	}
 
 	label {
+		cursor:        pointer;
 		font-size:     $font-size-base;
 		font-weight:   300;
 		margin-bottom: 0;
-		position:      relative;
 		padding-left:  35px;
-		cursor:        pointer;
+		position:      relative;
 
 		&:after {
 			clear:   both;
@@ -91,17 +92,17 @@
 			display: table;
 		}
 
-		input[type="checkbox"] {
+		input[type='checkbox'] {
 			display: none;
 
 			+ .cr {
+				left:     0;
 				position: absolute;
 				top:      0;
-				left:     0;
 
 				> .cr-icon {
-					transform:  scale(3) rotateZ(-20deg);
 					opacity:    0;
+					transform:  scale(3) rotateZ(-20deg);
 					transition: all $speed $easing;
 				}
 			}
@@ -109,11 +110,11 @@
 			&:checked {
 				+ .cr {
 					background: $brand-primary;
-					color:      #fff;
+					color:      #ffffff;
 
 					> .cr-icon {
-						transform: scale(1) rotateZ(0deg);
 						opacity:   1;
+						transform: scale(1) rotateZ(0deg);
 					}
 				}
 			}
@@ -130,21 +131,20 @@
 
 	.cr {
 		border:        2px solid $brand-primary;
-		position:      relative;
-		display:       inline-block;
 		border-radius: $border-radius-small;
-		width:         $font-size-large;
-		height:        $font-size-large;
+		display:       inline-block;
 		float:         left;
+		height:        $font-size-large;
 		margin-right:  ceil(($line-height-computed / 2));
+		position:      relative;
+		width:         $font-size-large;
 
 		.cr-icon {
-			position:    absolute;
 			font-size:   .8em;
-			line-height: 0;
-			top:         50%;
 			left:        15%;
+			line-height: 0;
+			position:    absolute;
+			top:         50%;
 		}
 	}
 }
-

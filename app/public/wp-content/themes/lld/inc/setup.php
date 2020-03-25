@@ -8,6 +8,13 @@ function theme_features() {
 	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'comment-form', 'comment-list' ) );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'custom-logo', array(
+		'height'      => 102,
+		'width'       => 400,
+		'flex-height' => true,
+		'flex-width'  => true,
+		'header-text' => array( 'site-title', 'site-description' ),
+	) );
 	add_post_type_support( 'page', 'excerpt' );
 }
 
@@ -75,88 +82,18 @@ function tune_robots( $output, $path ) {
 
 add_filter( 'robots_txt', 'tune_robots' );
 
-/**
- * Add setting that administrators can check to set the site to maintenance
- * mode which only allows logged-in users to view the site
- */
-/*function cov_maintenance_init() {
+// Careers event front page display
+function lld_events_display_init() {
 
-	// Create a new section on the general settings page
-	// where we can stick some things specific to our implementation
-	// that will make our lives easier.
-	add_settings_section(
-		'cov_settings_section',
-		'Covenant Health Setup Options',
-		'cov_settings_section_callback',
-		'general'
+	$args = array(
+		'id'            => 'lld-events-display',
+		'class'         => 'lld-events-display',
+		'name'          => __( 'Display LLD Events', 'covenant' ),
+		'description'   => __( 'This widget area is only for displaying events listing on the front page of the site', 'covenant' ),
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	);
+	register_sidebar( $args );
 
-	// Add a field that contains a checkbox that, when checked
-	// denotes that the administrator wishes to set the site in
-	// maintenance mode.
-	add_settings_field(
-		'cov_set_maintenance',
-		'Maintenance Mode',
-		'cov_settings_maintenance_field_callback',
-		'general',
-		'cov_settings_section'
-	);
-
-	// Register the new setting
-	register_setting(
-		'general',
-		'cov_set_maintenance'
-	);
 }
-
-add_action( 'admin_init', 'cov_maintenance_init' );
-
-function cov_settings_section_callback() {
-	echo '<p>This section contains options specific to the Covenant Health implementation of WordPress.</p>';
-}
-
-function cov_settings_maintenance_field_callback() {
-
-	echo '<label for="cov_set_maintenance">';
-	echo '<input type="checkbox" id="cov_set_maintenance" name="cov_set_maintenance" value="1" class="code" ' . checked( 1, get_option( 'cov_set_maintenance' ), false ) . '>';
-	echo ' Check this box to enable maintenance mode. When maintenance mode is enabled, only logged-in users may be able to view the site.</label>';
-}
-
-/**
- * Protect the site during setup by forcing users to log in
- * before they can view the site.
- *
- * @return string
- */
-/*function restrict_login() {
-	$maintenance_check = get_option( 'cov_set_maintenance' );
-
-	$url = sprintf(
-		"%s://%s%s",
-		isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-		$_SERVER['SERVER_NAME'],
-		$_SERVER['REQUEST_URI']
-	);
-
-	if( $url == 'https://www.tnheartburnclinic.com/' && !is_user_logged_in() ) {
-
-		auth_redirect();
-
-	}
-}
-add_action( 'init', 'restrict_login' );*/
-
-/*function restrict_login( $content ) {
-	$maintenance_check = get_option( 'cov_set_maintenance' );
-
-	if ( ! is_user_logged_in() && $maintenance_check === '1' ) {
-		//auth_redirect();
-
-		$content .= '<p>User is not logged in.</p>';
-		$content .= '<p>Maintenance is switched on.</p>';
-	}
-
-	return $content;
-}
-
-add_action( 'the_content', 'restrict_login' );*/
+add_action( 'widgets_init', 'lld_events_display_init' );

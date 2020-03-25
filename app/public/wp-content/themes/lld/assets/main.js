@@ -3,6 +3,13 @@
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 $(document).ready(function () {
+  // Masthead search
+  $('.masthead-search').keypress(function (e) {
+    if (13 === e.which) {
+      var searchVal = $(this).val();
+      window.location.href = '/courses?q=' + searchVal;
+    }
+  });
   var title = $('.landing-masthead .fallback-title h2, .landing-masthead .masthead-copy-area h2').text();
   $('.landing-masthead .fallback-title h2, .landing-masthead .masthead-copy-area h2').replaceWith('<h1>' + title + '</h1>');
   $('.sidebar.nav-sidebar ul').addClass('nav sidenav-menu');
@@ -79,12 +86,13 @@ $(document).ready(function () {
 var timer = 0; // This function pushes the footer down
 // on pages that have short content
 
-$(window).on('load resize', function sticky_footer() {
+$(window).on('load resize', function stickyFooter() {
   // sticky footer stuff
   var windowHeight = $(window).height(),
       adminBarHeight = $('#wpadminbar').height(),
       contentHeight = $('.wrapper').outerHeight(),
-      footerHeight = $('footer').outerHeight();
+      footerHeight = $('footer').outerHeight(); // clear the timeout so we can start fresh
+
   clearTimeout(timer);
   timer = setTimeout(function () {
     if (contentHeight + footerHeight < windowHeight) {
@@ -162,4 +170,9 @@ var scroll = new SmoothScroll('a[href*="#"]', {
   // Custom Events
   emitEvents: true // Emit custom events
 
+});
+$('.btn-enroll').hover(function () {
+  $(this).find('i').last().remove().prepend('<i class="fas fa-lightbulb"></i>');
+}, function () {
+  $(this).find('i').last().remove().prepend('<i class="far fa-lightbulb"></i>');
 });

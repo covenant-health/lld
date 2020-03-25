@@ -1,6 +1,88 @@
-#course-search {
-	input, select {
-		font-weight: 300;
+.course-search {
+	align-content:   space-between;
+	align-items:     flex-start;
+	display:         flex;
+	flex-flow:       row wrap;
+	justify-content: space-between;
+	margin:          0;
+	padding:         0;
+
+	> div {
+		width: 100%;
+
+		.form-control {
+			@extend .input-sm;
+			font-weight: 300;
+			width:       100% ! important;
+
+			&::placeholder {
+				font-weight: 300;
+			}
+		}
+
+		&:not(:first-of-type) {
+			width: 31%;
+		}
+
+		&.buttons {
+			margin:     0 auto;
+			text-align: center;
+			width:      100% !important;
+
+			button {
+				&:first-of-type {
+					margin-right: 15px;
+				}
+			}
+		}
+	}
+}
+
+@media  #{$small} {
+	.course-search {
+		> div {
+			width: 35%;
+
+			.form-control {
+				font-weight: 300;
+				width:       100% ! important;
+
+				&::placeholder {
+					font-weight: 300;
+				}
+			}
+
+			&:not(:first-of-type) {
+				width: 20%;
+			}
+		}
+	}
+}
+
+@media  #{$medium} {
+	.course-search {
+		.form-group {
+			padding: 0 15px 0 0;
+			width:   20%;
+
+			&:first-of-type {
+				width: 40%;
+			}
+
+			&:last-of-type {
+				padding: 0;
+			}
+		}
+
+		.form-control {
+			font-weight: 300;
+			padding:     6px 12px;
+			width:       100% ! important;
+
+			&::placeholder {
+				font-weight: 300;
+			}
+		}
 	}
 }
 
@@ -18,8 +100,8 @@
 	text-align: center;
 
 	i {
-		color: $brand-primary;
-		font-size: ceil(( $font-size-h1 * 2 ));
+		color:     $brand-primary;
+		font-size: ceil(($font-size-h1 * 2));
 	}
 }
 
@@ -33,24 +115,206 @@
 }
 
 .courses-results-list {
+	border-top: 1px solid $gray-lighter;
+	margin:     $line-height-computed 0 0;
+	padding:    15px 0 0;
+
 	li {
 		border: 1px solid #dedede;
+
+		.course-title {
+			background: $brand-primary;
+			padding:    15px;
+
+			a {
+				color:       #ffffff;
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+			}
+		}
+
+		.course-tax {
+			padding: 15px 15px 0;
+
+			.tax-name {
+				font-weight: 600;
+			}
+
+			p {
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.course-desc {
+			padding: 15px;
+		}
 	}
 }
 
 .user-msg {
+	width: auto;
+
 	.text-danger,
 	.text-success {
-		margin: 15px 0;
-		padding: 15px;
+		margin:     15px 0;
+		padding:    15px;
 		text-align: center;
 	}
 }
 
 .course-desc {
 	p {
-		border-top: 1px solid $gray-lighter;
-		padding-top: 15px;
+		border-top:    1px solid $gray-lighter;
 		margin-bottom: 0;
+		padding-top:   15px;
+	}
+}
+
+// Course page stuff
+.course-terms {
+	border-bottom: 1px solid $gray-lighter;
+	border-top:    1px solid $gray-lighter;
+	margin-bottom: 15px;
+
+	li {
+		margin: 15px 30px 15px 0 !important;
+
+		&:last-of-type {
+			margin: 15px 0 15px !important;
+		}
+	}
+}
+
+
+// Masthead search stuff
+.masthead-search {
+	align-content:   space-around;
+	align-items:     flex-start;
+	display:         flex;
+	flex-flow:       row wrap;
+	justify-content: space-around;
+	width:           100%;
+
+	.form-group {
+		flex-basis: 100%;
+
+		.form-control {
+			font-weight: 300;
+		}
+
+		input, select {
+			width: 100%;
+
+			&::placeholder {
+				font-weight: 300;
+			}
+		}
+	}
+
+	.btn.btn-default {
+		width: 100%;
+	}
+}
+
+@media #{$small} {
+	.masthead-search {
+		flex-flow: row nowrap;
+		margin:    0 auto;
+		width:     80%;
+
+		.form-group {
+			padding: 0 15px 0 0;
+
+			&:first-of-type {
+				flex-basis: 100%;
+			}
+
+			&:not(:first-of-type) {
+				flex-basis: 60%;
+			}
+
+			.form-control {
+				font-weight: 300;
+			}
+
+			input, select {
+				width: 100%;
+
+				&::placeholder {
+					font-weight: 300;
+				}
+			}
+		}
+
+		.btn.btn-default {
+			width: auto;
+		}
+	}
+}
+
+// Course page stuff
+.course-taxes {
+	align-content:   stretch;
+	align-items:     stretch;
+	display:         flex;
+	flex-flow:       row nowrap;
+	font-size:       $font-size-small;
+	justify-content: flex-start;
+
+	.course-tax {
+		flex-basis: 25%;
+		margin:     0 15px 0 0;
+
+		.tax-name {
+			font-weight: 600;
+		}
+	}
+}
+
+.enroll-cta {
+	margin-bottom: 30px;
+
+	.btn-enroll {
+		font-size:      $font-size-h3;
+		padding-bottom: 15px;
+		padding-top:    15px;
+		white-space:    normal;
+		width:          100%;
+
+		&::before {
+			content:       '\f0eb';
+			display:       block;
+			font-family:   'Font Awesome 5 Free';
+			font-size:     $font-size-h1;
+			margin-bottom: 5px;
+		}
+
+		&:active,
+		&:focus,
+		&:hover {
+			content: '\f0eb';
+		}
+	}
+}
+
+// Other courses
+.other-courses {
+	li {
+		border-bottom:  1px solid #dedede;
+		margin-bottom:  15px;
+		padding-bottom: 15px;
+
+		&:last-of-type,
+		&:only-of-type {
+			border-bottom: none;
+
+		}
+
+		p {
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
 	}
 }

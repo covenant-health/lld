@@ -26,15 +26,13 @@
 	<script src="<?php echo trailingslashit( get_stylesheet_directory_uri() ); ?>modernizr.js"></script>
 
 	<!-- fontawesome -->
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?> data-scroll-id="page-top" id="page-top">
-<?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) {
-	gtm4wp_the_gtm_tag();
-} ?>
+	<?php wp_body_open(); ?>
 <div class="wrapper">
 	<a href="#" data-scroll class="scroll-top">
 		<i class="fa fa-chevron-up"></i>

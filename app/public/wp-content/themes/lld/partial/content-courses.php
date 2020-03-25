@@ -9,134 +9,95 @@
  * @subpackage covenant
  */
 ?>
-<article <?php post_class('col-xs-12'); ?>>
-	<form action="" id="course-search">
-		<div class="row">
+<article <?php post_class( 'col-xs-12' ); ?>>
+	<div class="course-search">
+		<div class="form-group search-input">
+			<label for="search" class="sr-only">Search for a course</label>
+			<input type="text" name="search" id="search" class="form-control course-search"
+			       placeholder="Search for a course">
+		</div>
+		<div class="form-group location-select">
+			<label for="location" class="sr-only">Choose a location</label>
+			<select name="location" id="location" class="form-control location-select">
+				<option value="" default>All locations</option>
+				<?php
+				$locations = get_terms(
+					array(
+						'fields'     => 'all',
+						'order'      => 'ASC',
+						'orderby'    => 'name',
+						'post_type'  => 'course',
+						'taxonomy'   => 'location',
+						'hide_empty' => true,
+					)
+				);
+
+				if ( ! empty( $locations ) && ! is_wp_error( $locations ) ) {
+					foreach ( $locations as $location ) {
+						echo '<option value="' . $location->term_id . '">' . $location->name . '</option>';
+					}
+				}
+				?>
+			</select>
+		</div>
+		<div class="form-group program-select">
+			<label for="program" class="sr-only">Choose a Program</label>
+			<select name="trprogramack" id="program" class="form-control program-select">
+				<option value="" default>All programs</option>
+				<?php
+				$programs = get_terms(
+					array(
+						'fields'     => 'all',
+						'order'      => 'ASC',
+						'orderby'    => 'name',
+						'post_type'  => 'course',
+						'taxonomy'   => 'program',
+						'hide_empty' => true,
+					)
+				);
+
+				if ( ! empty( $programs ) && ! is_wp_error( $programs ) ) {
+					foreach ( $programs as $program ) {
+						echo '<option value="' . $program->term_id . '">' . $program->name . '</option>';
+					}
+				}
+				?>
+			</select>
+		</div>
+		<div class="form-group path-select">
+			<label for="path" class="sr-only">Choose a Path</label>
+			<select name="path" id="path" class="form-control program-select">
+				<option value="" default>All paths</option>
+				<?php
+				$paths = get_terms(
+					array(
+						'fields'     => 'all',
+						'order'      => 'ASC',
+						'orderby'    => 'name',
+						'post_type'  => 'course',
+						'taxonomy'   => 'path',
+						'hide_empty' => true,
+					)
+				);
+
+				if ( ! empty( $paths ) && ! is_wp_error( $paths ) ) {
+					foreach ( $paths as $path ) {
+						echo '<option value="' . $path->term_id . '">' . $path->name . '</option>';
+					}
+				}
+				?>
+			</select>
+		</div>
+		<div class="buttons">
+			<button id="filter" type="submit" class="btn btn-primary btn-submit">Filter</button>
+			<button id="reset" type="reset" href="javascript:void(0);" class="btn btn-clear btn-default">Reset</button>
+		</div>
+		<div class="row user-msg">
 			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="search" class="sr-only">Search for a course</label>
-					<input type="text" name="search" id="search" class="form-control course-search" placeholder="Search for a course">
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label for="location" class="sr-only">Choose a location</label>
-					<select name="location" id="location" class="form-control location-select">
-						<option value="" default>Choose a location</option>
-						<?php
-						$locations = get_terms(
-							array(
-								'fields'     => 'all',
-								'order'      => 'ASC',
-								'orderby'    => 'name',
-								'post_type'  => 'course',
-								'taxonomy'   => 'location',
-								'hide_empty' => true,
-							)
-						);
-
-						if( !empty( $locations) && !is_wp_error( $locations ) ) {
-							foreach( $locations as $location ) {
-								echo '<option value="' . $location->term_id . '">' . $location->name . '</option>';
-							}
-						}
-						?>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label for="instructor" class="sr-only">Choose an Instructor</label>
-					<select name="instructor" id="instructor" class="form-control instructor-select">
-						<option value="" default>Choose an Instructor</option>
-						<?php
-						$instructors = get_terms(
-							array(
-								'fields'     => 'all',
-								'order'      => 'ASC',
-								'orderby'    => 'name',
-								'post_type'  => 'course',
-								'taxonomy'   => 'instructor',
-								'hide_empty' => true,
-							)
-						);
-
-						if( !empty( $instructors) && !is_wp_error( $instructors ) ) {
-							foreach( $instructors as $instructor ) {
-								echo '<option value="' . $instructor->term_id . '">' . $instructor->name . '</option>';
-							}
-						}
-						?>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label for="track" class="sr-only">Choose a Program</label>
-					<select name="track" id="program" class="form-control program-select">
-						<option value="" default>Choose a Program</option>
-						<?php
-						$programs = get_terms(
-							array(
-								'fields'     => 'all',
-								'order'      => 'ASC',
-								'orderby'    => 'name',
-								'post_type'  => 'course',
-								'taxonomy'   => 'program',
-								'hide_empty' => true,
-							)
-						);
-
-						if( !empty( $programs) && !is_wp_error( $programs ) ) {
-							foreach( $programs as $program ) {
-								echo '<option value="' . $program->term_id . '">' . $program->name . '</option>';
-							}
-						}
-						?>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label for="track" class="sr-only">Choose a Category</label>
-					<select name="track" id="category" class="form-control category-select">
-						<option value="" default>Choose a Category</option>
-						<?php
-						$categories = get_terms(
-							array(
-								'fields'     => 'all',
-								'order'      => 'ASC',
-								'orderby'    => 'name',
-								'post_type'  => 'course',
-								'taxonomy'   => 'category',
-								'hide_empty' => true,
-							)
-						);
-
-						if( !empty( $categories) && !is_wp_error( $categories ) ) {
-							foreach( $categories as $category ) {
-								echo '<option value="' . $category->term_id . '">' . $category->name . '</option>';
-							}
-						}
-						?>
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-6 col-sm-2 col-sm-offset-4">
-					<button id="filter-results" type="submit" class="btn btn-primary btn-block btn-submit">Filter Results</button>
-				</div>
-				<div class="col-xs-6 col-sm-2">
-					<button id="reset-form" type="reset" href="javascript:void(0);" class="btn btn-clear btn-block">Reset Search</button>
-				</div>
-			</div>
-			<div class="row user-msg">
-				<div class="col-xs-12">
-					<p></p>
-				</div>
+				<p></p>
 			</div>
 		</div>
-	</form>
+	</div>
 
 	<?php
 	$args = array(
@@ -146,7 +107,7 @@
 
 	$courses = new WP_Query( $args );
 
-	if( $courses->have_posts() ) :	?>
+	if ( $courses->have_posts() ) : ?>
 		<div class="courses-container">
 			<div class="courses-results">
 				<!-- population handled by courses.js -->

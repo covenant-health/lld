@@ -15,8 +15,12 @@ get_header(); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 		<?php get_template_part( 'partial/content', 'breadcrumbs' ); ?>
 		<?php get_template_part( 'partial/content', 'headings' ); ?>
 		<div class="row post-content">
-			<?php get_template_part( 'partial/content', 'article' ); ?>
-			<?php get_sidebar(); ?>
+			<?php if( get_post_type() === 'course' ) {
+				get_template_part( 'partial/content', 'course' );
+			} else {
+				get_template_part( 'partial/content', 'article' );
+				get_sidebar();
+			} ?>
 		</div>
 	</main>
 

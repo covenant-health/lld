@@ -8,6 +8,8 @@
  * @package WordPress
  * @subpackage covenant
  */
+$custom_logo_id = get_theme_mod( 'custom_logo' );
+$logo_img       = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 ?>
 
 <nav class="navbar navbar-default">
@@ -18,7 +20,7 @@
 				<span class="toggle-text">menu</span>
 			</button> <!-- /navbar-toggle -->
 			<a class="navbar-brand" href="<?php echo home_url(); ?>">
-				<img src="<?php echo trailingslashit( get_stylesheet_directory_uri() ); ?>img/logo.svg" alt="<?php echo get_bloginfo( 'name' ); ?>"
+				<img src="<?php echo $logo_img[0]; ?>" alt="<?php echo get_bloginfo( 'name' ); ?>"
 				     title="<?php echo get_bloginfo( 'name' ); ?>">
 				<span class="sr-only"><?php echo get_bloginfo( 'name' ); ?></span>
 			</a>

@@ -356,53 +356,6 @@ aside,
 	}
 }
 
-/* ====================================
- * Courses list styling
- * ==================================== */
-
-.courses-results-list {
-	border-top: 1px solid $gray-lighter;
-	margin: $line-height-computed 0 0;
-	padding: 15px 0 0;
-
-	li {
-		border: 1px solid #dedede;
-
-		.course-title {
-			padding: 15px;
-
-			&.program-1 {
-				background: #1E6583;
-			}
-
-			&.program-2 {
-				background: #528D83;
-			}
-
-			&.program-3 {
-				background: #82A08B;
-			}
-
-			&.program-4 {
-				background: #B1BA8A;
-			}
-
-			&.program-5 {
-				background: #BA113E;
-			}
-
-			a {
-				color: #fff;
-				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-			}
-		}
-
-		.course-details {
-			padding: 15px;
-		}
-	}
-}
-
 .other-courses {
 	margin: 0;
 	padding: 0;

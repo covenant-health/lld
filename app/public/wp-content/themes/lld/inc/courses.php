@@ -41,7 +41,7 @@ function create_course_cpt() {
 		'description'           => __( 'This custom post type is used to create, store, and display new course listings offered by Covenant Health Learning & Leadership Development', 'covenant' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'revisions' ),
-		'taxonomies'            => array( 'location', 'instructor', 'program', 'category' ),
+		'taxonomies'            => array( 'location', 'instructor', 'program', 'path' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -191,36 +191,36 @@ function create_courses_tax() {
 	);
 	register_taxonomy( 'program', array( 'course' ), $program_args );
 
-	// Category taxonomy
-	$category_labels = array(
-		'name'                       => _x( 'Categories', 'Taxonomy General Name', 'covenant' ),
-		'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'covenant' ),
-		'menu_name'                  => __( 'Categories', 'covenant' ),
-		'all_items'                  => __( 'All Categories', 'covenant' ),
-		'parent_item'                => __( 'Parent Category', 'covenant' ),
-		'parent_item_colon'          => __( 'Parent Category:', 'covenant' ),
-		'new_item_name'              => __( 'New Category Name', 'covenant' ),
-		'add_new_item'               => __( 'Add New Category', 'covenant' ),
-		'edit_item'                  => __( 'Edit Category', 'covenant' ),
-		'update_item'                => __( 'Update Category', 'covenant' ),
-		'view_item'                  => __( 'View Category', 'covenant' ),
-		'separate_items_with_commas' => __( 'Separate categories with commas', 'covenant' ),
-		'add_or_remove_items'        => __( 'Add or remove categories', 'covenant' ),
+	// Path taxonomy
+	$path_labels = array(
+		'name'                       => _x( 'Paths', 'Taxonomy General Name', 'covenant' ),
+		'singular_name'              => _x( 'Path', 'Taxonomy Singular Name', 'covenant' ),
+		'menu_name'                  => __( 'Paths', 'covenant' ),
+		'all_items'                  => __( 'All Paths', 'covenant' ),
+		'parent_item'                => __( 'Parent Path', 'covenant' ),
+		'parent_item_colon'          => __( 'Parent Path:', 'covenant' ),
+		'new_item_name'              => __( 'New Path Name', 'covenant' ),
+		'add_new_item'               => __( 'Add New Path', 'covenant' ),
+		'edit_item'                  => __( 'Edit Path', 'covenant' ),
+		'update_item'                => __( 'Update Path', 'covenant' ),
+		'view_item'                  => __( 'View Path', 'covenant' ),
+		'separate_items_with_commas' => __( 'Separate paths with commas', 'covenant' ),
+		'add_or_remove_items'        => __( 'Add or remove paths', 'covenant' ),
 		'choose_from_most_used'      => __( 'Choose from the most used', 'covenant' ),
-		'popular_items'              => __( 'Popular categories', 'covenant' ),
-		'search_items'               => __( 'Search categories', 'covenant' ),
+		'popular_items'              => __( 'Popular paths', 'covenant' ),
+		'search_items'               => __( 'Search paths', 'covenant' ),
 		'not_found'                  => __( 'Not Found', 'covenant' ),
 		'no_terms'                   => __( 'No programs', 'covenant' ),
-		'items_list'                 => __( 'Categories list', 'covenant' ),
-		'items_list_navigation'      => __( 'Categories list navigation', 'covenant' ),
+		'items_list'                 => __( 'Paths list', 'covenant' ),
+		'items_list_navigation'      => __( 'Paths list navigation', 'covenant' ),
 	);
-	$category_rewrite = array(
-		'slug'                       => 'category',
+	$path_rewrite = array(
+		'slug'                       => 'path',
 		'with_front'                 => true,
 		'hierarchical'               => true,
 	);
-	$category_args = array(
-		'labels'                     => $category_labels,
+	$path_args = array(
+		'labels'                     => $path_labels,
 		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
@@ -228,10 +228,10 @@ function create_courses_tax() {
 		'show_in_nav_menus'          => false,
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
-		'rest_base'                  => 'category',
-		'rewrite'                    => $category_rewrite,
+		'rest_base'                  => 'path',
+		'rewrite'                    => $path_rewrite,
 	);
-	register_taxonomy( 'category', array( 'course' ), $category_args );
+	register_taxonomy( 'path', array( 'course' ), $path_args );
 }
 add_action( 'init', 'create_courses_tax', 0);
 
@@ -280,9 +280,9 @@ function wp_rest_insert_tag_links(){
 		)
 	);
 	register_rest_field( 'course',
-		'categories',
+		'paths',
 		array(
-			'get_callback'    => 'wp_rest_get_category_links',
+			'get_callback'    => 'wp_rest_get_path_links',
 			'update_callback' => null,
 			'schema'          => null,
 		)
@@ -296,7 +296,7 @@ function course_extra_data( $data, $post, $context ) {
 		unset( $data->data[ 'location' ] );
 		unset( $data->data[ 'instructor' ] );
 		unset( $data->data[ 'program' ] );
-		unset( $data->data[ 'category' ] );
+		unset( $data->data[ 'path' ] );
 		unset( $data->data[ 'modified' ] );
 		unset( $data->data[ 'modified_gmt' ] );
 		unset( $data->data[ 'type' ] );
@@ -360,21 +360,21 @@ function wp_rest_get_program_links( $post ){
 	return $course_programs;
 }
 
-function wp_rest_get_category_links( $post ){
-	$course_categories = array();
-	$categories = wp_get_post_terms( $post[ 'id' ], 'category', array( 'fields'=>'all' ) );
+function wp_rest_get_path_links( $post ){
+	$course_paths = array();
+	$paths = wp_get_post_terms( $post[ 'id' ], 'path', array( 'fields'=>'all' ) );
 
-	foreach( $categories as $category ) {
-		$term_link = get_term_link( $category );
+	foreach( $paths as $path ) {
+		$term_link = get_term_link( $path );
 
 		if( is_wp_error( $term_link ) ) {
 			continue;
 		}
 
-		$course_categories[] = array( 'term_id'=>$category->term_id, 'name'=>$category->name, 'slug'=> $category->slug, 'link'=>$term_link);
+		$course_paths[] = array( 'term_id'=>$path->term_id, 'name'=>$path->name, 'slug'=> $path->slug, 'link'=>$term_link);
 	}
 
-	return $course_categories;
+	return $course_paths;
 }
 
 add_filter( 'rest_course_collection_params', 'change_post_per_page', 10, 1 );

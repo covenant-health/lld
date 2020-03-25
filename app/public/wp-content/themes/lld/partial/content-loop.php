@@ -20,16 +20,17 @@ if( $news_query->have_posts() ) : ?>
 	<article class="container system-news">
 		<div class="row">
 			<div class="col-xs-12">
+				<hr>
 				<h2><?php echo get_bloginfo( 'name' ); ?> News</h2>
 				<ul class="four-column full-width blog-loop">
 					<?php while( $news_query->have_posts() ) : $news_query->the_post(); ?>
 
 						<li class="inset">
-							<p>
+							<h3>
 								<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>">
-									<img src="<?php the_post_thumbnail_url(); ?>" class="img-responsive" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
+									<?php the_title(); ?>
 								</a>
-							</p>
+							</h3>
 							<?php the_excerpt(); ?>
 						</li>
 
