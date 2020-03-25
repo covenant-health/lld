@@ -20,7 +20,7 @@
 			}
 		}
 
-		&:not(:first-of-type) {
+		&:not(:first-of-type):not(.user-msg) {
 			width: 31%;
 		}
 
@@ -36,11 +36,19 @@
 			}
 		}
 	}
+
+	.user-msg {
+		p {
+			a {
+				//color: #3c763d;
+			}
+		}
+	}
 }
 
 @media  #{$small} {
 	.course-search {
-		> div {
+		> div:not(.user-msg) {
 			width: 35%;
 
 			.form-control {
@@ -52,7 +60,7 @@
 				}
 			}
 
-			&:not(:first-of-type) {
+			&:not(:first-of-type):not(.user-msg) {
 				width: 20%;
 			}
 		}

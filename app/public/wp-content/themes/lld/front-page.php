@@ -18,7 +18,6 @@ get_header(); ?>
 	<div class="container welcome-container">
 		<main class="row">
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-xs-12' ); ?>>
-				<?php echo get_option('notification_message'); ?>
 				<?php the_content(); ?>
 				<hr>
 			</article>

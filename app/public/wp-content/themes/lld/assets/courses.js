@@ -4,18 +4,20 @@
 		head = $( '.courses-head' ),
 		loading = $( '.courses-loading' ),
 		results = $( '.courses-results-list' ),
+		userMsg = $( '.user-msg p' ),
+		queryString = '',
 		url = courses.rest_url + 'courses';
 
-	$( count, head, endMsg ).hide();
-	//$( loading ).hide();
+	$( count, head, userMsg ).hide();
 
 	getData();
 
 	function getData() {
-		let queryString = '';
+		results.empty();
 
-		if ( '' !== sessionStorage.getItem( 'search_filters' ) ) {
-			queryString = '?' + sessionStorage.getItem( 'search_filters' );
+		if ( -1 < window.location.href.indexOf( 'search' ) ) {
+			queryString = window.location.search;
+			userMsg.show().addClass( 'bg-success text-success' ).append( 'You are viewing courses based on your search criteria. <a class="reset-link" href="javascript: void(0);">Reset to view all courses</a>.' );
 		}
 
 		let updatedUrl = url + queryString;
@@ -38,7 +40,7 @@
 				}
 				let posts = parseInt( jqXHR.getResponseHeader( 'x-wp-total' ) );
 				if ( ! data.length ) {
-					count.show().addClass( 'text-danger' ).text( 'No results. Please try a different set of search criteria.' );
+					userMsg.show().addClass( 'text-danger' ).text( 'No results. Please try a different set of search criteria.' );
 					loading.hide();
 				} else {
 					loadData( data, posts );
@@ -92,49 +94,45 @@
 		}
 	}
 
-	$( '#filter-results' ).on( 'click', function( e ) {
-		e.stopPropagation();
+	$( '#filter' ).on( 'click', function( e ) {
 		e.stopPropagation();
 		e.preventDefault();
-		results.empty();
-		count.hide();
-		head.hide();
-		endMsg.hide();
 		$( loading ).show();
 
-		let filters = $( '#search, #location, #instructor, #program, #category' ).serialize().replace( /&?[^=&]+=(&|$)/g, '' );
+		let filters = $( '#search, #location, #program, #path' ).serialize().replace( /&?[^=&]+=(&|$)/g, '' );
 
 		if ( 1 > filters.length || ! typeof ( filters ) ) {
-			$( '.user-msg' ).show().find( 'p' ).addClass( 'bg-danger text-danger' ).text( 'Please enter a search term or select a filter above, then resubmit the form.' );
+			userMsg.show().addClass( 'bg-danger text-danger' ).text( 'Please enter a search term or select a filter above, then resubmit the form.' );
+			getData();
 		} else {
-			$( '.user-msg' ).show().find( 'p' ).addClass( 'bg-success text-success' ).text( 'Success! Your search filters will persist until you reset the form or close the browser window.' );
-			sessionStorage.removeItem( 'search_filters' );
-			sessionStorage.setItem( 'search_filters', filters );
+			userMsg.hide().removeClass();
+			queryString = '?' + filters;
 			getData();
 		}
 	} );
 
 	// Reset the form and kill off the storage item for
 	// any search filters that have been set.
-	$( '#reset-form' ).on( 'click', function( e ) {
+	$( '#reset, .reset-link' ).on( 'click', function( e ) {
+		if ( -1 < window.location.href.indexOf( 'search' ) ) {
+			window.history.pushState( '', document.title, window.location.pathname );
+		}
+
 		e.stopPropagation();
 		e.preventDefault();
 		results.empty();
-		$( '.user-msg' ).hide();
+		$( '.user-msg' ).hide().removeClass();
 		count.hide();
 		loading.show();
+		queryString = '';
 
-		$( '#specialty, #location' ).prop( 'selectedIndex', 0 );
+		$( '#specialty, #location, #path' ).prop( 'selectedIndex', 0 );
 		$( '#search' ).val( '' );
-
-		/*if ( sessionStorage.getItem( 'search_filters' ) ) {
-			sessionStorage.removeItem( 'search_filters' );
-		}*/
 
 		getData();
 	} );
 
-	$( '#filter-results, #reset-form, .opps-next-page, #search, #location, #instructor, #program, #category' ).keypress( function() {
+	$( '#filter, #reset, .reset-link' ).keypress( function() {
 		$( this ).keypress( function( e ) {
 			let keycode = ( e.keyCode ? e.keyCode : e.which );
 			if ( keycode === '13' ) {
@@ -143,12 +141,9 @@
 		} );
 	} );
 
-	// Masthead search
-	$( '.masthead-search' ).keypress( function( e ) {
+	$( '#search, #location, #program, #path' ).keypress( function( e ) {
 		if ( 13 === e.which ) {
-			let searchVal = $( this ).val();
-			window.location.href = '/courses?q=' + searchVal;
-			$( '.masthead-btn' ).click();
+			$( '#filter' ).click();
 		}
 	} );
 } )( jQuery );

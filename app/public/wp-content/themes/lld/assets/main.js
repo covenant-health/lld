@@ -91,18 +91,15 @@ $(window).on('load resize', function stickyFooter() {
   var windowHeight = $(window).height(),
       adminBarHeight = $('#wpadminbar').height(),
       contentHeight = $('.wrapper').outerHeight(),
-      footerHeight = $('footer').outerHeight(); // clear the timeout so we can start fresh
+      footerHeight = $('footer').outerHeight();
 
-  clearTimeout(timer);
-  timer = setTimeout(function () {
-    if (contentHeight + footerHeight < windowHeight) {
-      if ($('#wpadminbar').length) {
-        $('.wrapper').css('margin-bottom', windowHeight - (contentHeight + footerHeight + adminBarHeight));
-      } else {
-        $('.wrapper').css('margin-bottom', windowHeight - (contentHeight + footerHeight));
-      }
+  if (contentHeight + footerHeight < windowHeight) {
+    if ($('#wpadminbar').length) {
+      $('.wrapper').css('margin-bottom', windowHeight - (contentHeight + footerHeight + adminBarHeight));
+    } else {
+      $('.wrapper').css('margin-bottom', windowHeight - (contentHeight + footerHeight));
     }
-  }, 300);
+  }
 }); // Resize the masthead so that it better keeps the aspect ratio
 // of the original background image regardless of screen width.
 

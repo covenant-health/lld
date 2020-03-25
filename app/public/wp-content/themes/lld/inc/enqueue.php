@@ -11,7 +11,7 @@ if ( !is_admin() ) {
 	add_action( 'wp_enqueue_scripts', function() {
 		wp_deregister_script('jquery');
 
-		wp_register_script('jquery', trailingslashit( get_template_directory_uri() ) . 'jquery-3.2.1.min.js', false,
+		wp_register_script('jquery', trailingslashit( get_template_directory_uri() ) . 'assets/jquery-3.2.1.min.js', false,
 			'', false );
 
 		wp_enqueue_script('jquery');

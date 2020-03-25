@@ -8,7 +8,7 @@ function change_login_logo() {
 
 		echo '<style type="text/css">
 		    .login h1 a {
-                background-image: url(' . trailingslashit( get_template_directory_uri() ) . 'img/logo.png) !important;
+                background-image: url(' . trailingslashit( get_template_directory_uri() ) . 'img/covenant-health-logo-web.png) !important;
                 background-size: contain !important;
                 background-position: center center;
                 background-repeat: no-repeat;
