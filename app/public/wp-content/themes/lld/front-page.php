@@ -11,7 +11,7 @@
 
 get_header(); ?>
 
-<?php if ( have_posts() ) : while( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 	<?php get_template_part( 'partial/content', 'masthead' ); ?>
 
@@ -28,17 +28,39 @@ get_header(); ?>
 
 		<div class="row">
 			<div class="col-md-4">
-				<div class="well">
-					<?php $services = get_field( 'services' ); if( $services ) : ?>
-					<h3><?php echo $services['services_headline']; ?></h3>
-						<?php dynamic_sidebar( 'lld-events-display' ); ?>
+				<div>
+					<?php $services = get_field( 'services' );
+					if ( $services ) : ?>
+						<h3><?php echo $services['services_headline']; ?></h3>
+						<?php
+						$args = array(
+							'order'          => 'rand',
+							'post_type'      => 'course',
+							'post_status'    => 'publish',
+							'posts_per_page' => 3,
+							'meta_key'       => 'featured_course',
+							'meta_value'     => 1
+
+						);
+
+						$feat_courses = new WP_Query( $args );
+
+						if ( $feat_courses->have_posts() ) : while ( $feat_courses->have_posts() ) : $feat_courses->the_post(); ?>
+							<h4><a href="<?php the_permalink(); ?>"
+							       title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>
+							<?php the_excerpt(); ?>
+						<?php endwhile; else : ?>
+							<p>No posts.</p>
+						<?php endif;
+						wp_reset_postdata(); ?>
 					<?php endif; ?>
 				</div>
 			</div> <!-- /services-col -->
 
 			<div class="col-md-4">
-				<div class="well">
-					<?php $patients = get_field( 'patients' ); if( $patients ) : ?>
+				<div>
+					<?php $patients = get_field( 'patients' );
+					if ( $patients ) : ?>
 						<h3><?php echo $patients['patients_headline']; ?></h3>
 						<?php echo $patients['patients_content']; ?>
 					<?php endif; ?>
@@ -53,23 +75,29 @@ get_header(); ?>
 
 					$update_query = new WP_Query( $update_args );
 
-					if( $update_query->have_posts() ) : while( $update_query->have_posts() ) : $update_query->the_post(); ?>
+					if ( $update_query->have_posts() ) : while ( $update_query->have_posts() ) : $update_query->the_post(); ?>
 
-						<h4><a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?>"><?php the_title(); ?></a></h4>
-						<p class="small">Posted on <time datetime="<?php echo get_the_date( 'c'); ?>"><?php echo get_the_date( 'F j, Y'); ?></time></p>
+						<h4><a href="<?php the_permalink(); ?>"
+						       title="Read <?php the_title(); ?>"><?php the_title(); ?></a></h4>
+						<p class="small">Posted on
+							<time
+								datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date( 'F j, Y' ); ?></time>
+						</p>
 						<?php the_excerpt(); ?>
 
 					<?php endwhile; else : ?>
 
 						<p>No posts were found.</p>
 
-					<?php endif; wp_reset_postdata(); ?>
+					<?php endif;
+					wp_reset_postdata(); ?>
 				</div>
 			</div> <!-- /account-col -->
 
 			<div class="col-md-4">
-				<div class="well">
-					<?php $updates = get_field( 'updates' ); if( $updates ) : ?>
+				<div>
+					<?php $updates = get_field( 'updates' );
+					if ( $updates ) : ?>
 						<h3><?php echo $updates['update_headline']; ?></h3>
 						<?php echo $updates['update_content']; ?>
 					<?php endif; ?>
@@ -84,30 +112,32 @@ get_header(); ?>
 
 					$update_query = new WP_Query( $update_args );
 
-					if( $update_query->have_posts() ) : while( $update_query->have_posts() ) : $update_query->the_post(); ?>
+					if ( $update_query->have_posts() ) : while ( $update_query->have_posts() ) : $update_query->the_post(); ?>
 
-						<h4><a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?>"><?php the_title(); ?></a></h4>
-						<p class="small">Posted on <time datetime="<?php echo get_the_date( 'c'); ?>"><?php echo get_the_date( 'F j, Y'); ?></time></p>
-						<p class="small">Posted on <time datetime="<?php echo get_the_date( 'c'); ?>"><?php echo get_the_date( 'F j, Y'); ?></time></p>
+						<h4><a href="<?php the_permalink(); ?>"
+						       title="Read <?php the_title(); ?>"><?php the_title(); ?></a></h4>
+						<p class="small">Posted on <time datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date( 'F j, Y' ); ?></time>
+						</p>
 						<?php the_excerpt(); ?>
 
 					<?php endwhile; else : ?>
 
 						<p>No posts were found.</p>
 
-					<?php endif; wp_reset_postdata(); ?>
+					<?php endif;
+					wp_reset_postdata(); ?>
 				</div>
 			</div> <!-- /account-col -->
 		</div> <!-- /resources-row -->
 
 	</div> <!-- /container.resources-container -->
 
-	<!--<div class="jumbotron lower-masthead" style="background-image: url(<?php /*the_field( 'lower_hero_image' ) */?>)">
+	<!--<div class="jumbotron lower-masthead" style="background-image: url(<?php /*the_field( 'lower_hero_image' ) */ ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8 col-md-6">
 					<div class="well translucent-well">
-						<?php /*the_field( 'call_to_action' ) */?>
+						<?php /*the_field( 'call_to_action' ) */ ?>
 					</div>
 				</div>
 			</div>

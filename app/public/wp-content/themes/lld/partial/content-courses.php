@@ -13,7 +13,7 @@
 	<div class="course-search">
 		<div class="form-group search-input">
 			<label for="search" class="sr-only">Search for a course</label>
-			<input type="text" name="search" id="search" class="form-control course-search"
+			<input type="text" name="search" id="search" autocomplete="off" class="form-control course-search"
 			       placeholder="Search for a course">
 		</div>
 		<div class="form-group location-select">

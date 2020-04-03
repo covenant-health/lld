@@ -3,7 +3,9 @@
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 $(document).ready(function () {
-  // Masthead search
+  var logoHeight = $('.navbar-brand img').height();
+  $('.navbar-brand').css('height', logoHeight + 'px'); // Masthead search
+
   $('.masthead-search').keypress(function (e) {
     if (13 === e.which) {
       var searchVal = $(this).val();

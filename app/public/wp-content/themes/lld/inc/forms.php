@@ -1,6 +1,10 @@
 <?php
-// Remove form entry after submission
-add_action( 'gform_after_submission', 'remove_form_entry' );
-function remove_form_entry( $entry ) {
-	GFAPI::delete_entry( $entry['id'] );
+// Change default notification details
+function change_from_email( $notification, $form, $entry ) {
+	$notification['fromName'] = str_replace( '', 'Covenant Health', $notification[ 'fromName' ]);
+	$notification['from'] = str_replace( '{admin_email}', 'noreply@covenanthealth.com', $notification[ 'from' ]);
+	$notification['replyTo'] = str_replace( '', 'noreply@covenanthealth.com', $notification[ 'replyTo' ]);
+	return $notification;
 }
+
+add_filter( 'gform_notification', 'change_from_email', 10, 3 );

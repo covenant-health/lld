@@ -1,5 +1,9 @@
 $( document ).ready( function() {
 
+	let logoHeight = $( '.navbar-brand img' ).height();
+
+	$( '.navbar-brand' ).css( 'height', logoHeight + 'px' );
+
 	// Masthead search
 	$( '.masthead-search' ).keypress( function( e ) {
 		if ( 13 === e.which ) {

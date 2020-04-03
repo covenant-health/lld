@@ -354,8 +354,8 @@ a.text-success:hover,a.text-success:focus{color:#2b542c}
 a.text-info:hover,a.text-info:focus{color:#245269}
 .text-warning{color:#8a6d3b}
 a.text-warning:hover,a.text-warning:focus{color:#66512c}
-.text-danger{color:#a94442}
-a.text-danger:hover,a.text-danger:focus{color:#843534}
+.text-danger,.gform_fields .gfield .gfield_description.validation_message{color:#a94442}
+a.text-danger:hover,.gform_fields .gfield a.gfield_description.validation_message:hover,a.text-danger:focus,.gform_fields .gfield a.gfield_description.validation_message:focus{color:#843534}
 .bg-primary{color:#fff}
 .bg-primary{background-color:#00549f}
 a.bg-primary:hover,a.bg-primary:focus{background-color:#00396c}
@@ -365,8 +365,8 @@ a.bg-success:hover,a.bg-success:focus{background-color:#c1e2b3}
 a.bg-info:hover,a.bg-info:focus{background-color:#afd9ee}
 .bg-warning{background-color:#fcf8e3}
 a.bg-warning:hover,a.bg-warning:focus{background-color:#f7ecb5}
-.bg-danger{background-color:#f2dede}
-a.bg-danger:hover,a.bg-danger:focus{background-color:#e4b9b9}
+.bg-danger,.gform_fields .gfield .gfield_description.validation_message{background-color:#f2dede}
+a.bg-danger:hover,.gform_fields .gfield a.gfield_description.validation_message:hover,a.bg-danger:focus,.gform_fields .gfield a.gfield_description.validation_message:focus{background-color:#e4b9b9}
 .page-header{padding-bottom:12px;margin:52px 0 26px;border-bottom:1px solid #eee}
 ul,ol{margin-top:0;margin-bottom:13px}
 ul ul,ul ol,ol ul,ol ol{margin-bottom:0}
@@ -548,11 +548,11 @@ textarea.input-lg,.input-group-lg>textarea.form-control,.gform_fields .gfield .i
 .has-warning .form-control:focus,.has-warning .gform_fields .gfield input:focus:not([type='radio']):not([type='checkbox']),.gform_fields .gfield .has-warning input:focus:not([type='radio']):not([type='checkbox']),.has-warning .gform_fields .gfield select:focus,.gform_fields .gfield .has-warning select:focus,.has-warning .gform_fields .gfield textarea:focus,.gform_fields .gfield .has-warning textarea:focus,.has-warning .widget-sidebar .widget select:focus,.widget-sidebar .widget .has-warning select:focus{border-color:#66512c;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #c0a16b;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #c0a16b}
 .has-warning .input-group-addon{color:#8a6d3b;background-color:#fcf8e3;border-color:#8a6d3b}
 .has-warning .form-control-feedback{color:#8a6d3b}
-.has-error .help-block,.has-error .control-label,.has-error .radio,.has-error .checkbox,.has-error .radio-inline,.has-error .checkbox-inline,.has-error.radio label,.has-error.checkbox label,.has-error.radio-inline label,.has-error.checkbox-inline label{color:#a94442}
-.has-error .form-control,.has-error .gform_fields .gfield input:not([type='radio']):not([type='checkbox']),.gform_fields .gfield .has-error input:not([type='radio']):not([type='checkbox']),.has-error .gform_fields .gfield select,.gform_fields .gfield .has-error select,.has-error .gform_fields .gfield textarea,.gform_fields .gfield .has-error textarea,.has-error .widget-sidebar .widget select,.widget-sidebar .widget .has-error select{border-color:#a94442;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)}
-.has-error .form-control:focus,.has-error .gform_fields .gfield input:focus:not([type='radio']):not([type='checkbox']),.gform_fields .gfield .has-error input:focus:not([type='radio']):not([type='checkbox']),.has-error .gform_fields .gfield select:focus,.gform_fields .gfield .has-error select:focus,.has-error .gform_fields .gfield textarea:focus,.gform_fields .gfield .has-error textarea:focus,.has-error .widget-sidebar .widget select:focus,.widget-sidebar .widget .has-error select:focus{border-color:#843534;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #ce8483;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #ce8483}
-.has-error .input-group-addon{color:#a94442;background-color:#f2dede;border-color:#a94442}
-.has-error .form-control-feedback{color:#a94442}
+.has-error .help-block,.gform_fields .gfield.gfield_error .help-block,.has-error .control-label,.gform_fields .gfield.gfield_error .control-label,.has-error .radio,.gform_fields .gfield.gfield_error .radio,.has-error .checkbox,.gform_fields .gfield.gfield_error .checkbox,.has-error .radio-inline,.gform_fields .gfield.gfield_error .radio-inline,.has-error .checkbox-inline,.gform_fields .gfield.gfield_error .checkbox-inline,.has-error.radio label,.gform_fields .radio.gfield.gfield_error label,.has-error.checkbox label,.gform_fields .checkbox.gfield.gfield_error label,.has-error.radio-inline label,.gform_fields .radio-inline.gfield.gfield_error label,.has-error.checkbox-inline label,.gform_fields .checkbox-inline.gfield.gfield_error label{color:#a94442}
+.has-error .form-control,.gform_fields .gfield.gfield_error .form-control,.has-error .gform_fields .gfield input:not([type='radio']):not([type='checkbox']),.gform_fields .gfield .has-error input:not([type='radio']):not([type='checkbox']),.gform_fields .gfield.gfield_error input:not([type='radio']):not([type='checkbox']),.has-error .gform_fields .gfield select,.gform_fields .gfield .has-error select,.gform_fields .gfield.gfield_error select,.has-error .gform_fields .gfield textarea,.gform_fields .gfield .has-error textarea,.gform_fields .gfield.gfield_error textarea,.has-error .widget-sidebar .widget select,.widget-sidebar .widget .has-error select{border-color:#a94442;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)}
+.has-error .form-control:focus,.gform_fields .gfield.gfield_error .form-control:focus,.has-error .gform_fields .gfield input:focus:not([type='radio']):not([type='checkbox']),.gform_fields .gfield .has-error input:focus:not([type='radio']):not([type='checkbox']),.gform_fields .gfield.gfield_error input:focus:not([type='radio']):not([type='checkbox']),.has-error .gform_fields .gfield select:focus,.gform_fields .gfield .has-error select:focus,.gform_fields .gfield.gfield_error select:focus,.has-error .gform_fields .gfield textarea:focus,.gform_fields .gfield .has-error textarea:focus,.gform_fields .gfield.gfield_error textarea:focus,.has-error .widget-sidebar .widget select:focus,.widget-sidebar .widget .has-error select:focus{border-color:#843534;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #ce8483;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 6px #ce8483}
+.has-error .input-group-addon,.gform_fields .gfield.gfield_error .input-group-addon{color:#a94442;background-color:#f2dede;border-color:#a94442}
+.has-error .form-control-feedback,.gform_fields .gfield.gfield_error .form-control-feedback{color:#a94442}
 .has-feedback label ~ .form-control-feedback{top:31px}
 .has-feedback label.sr-only ~ .form-control-feedback{top:0}
 .help-block{display:block;margin-top:5px;margin-bottom:10px;color:#737373}
@@ -1026,8 +1026,8 @@ a.list-group-item-danger.active,a.list-group-item-danger.active:hover,a.list-gro
 .embed-responsive .embed-responsive-item,.embed-responsive iframe,.embed-responsive embed,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}
 .embed-responsive-16by9{padding-bottom:56.25%}
 .embed-responsive-4by3{padding-bottom:75%}
-.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);box-shadow:inset 0 1px 1px rgba(0,0,0,0.05)}
-.well blockquote{border-color:#ddd;border-color:rgba(0,0,0,0.15)}
+.well,.resources-container .row>div>div,.resources-container .gform_fields>div>div{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);box-shadow:inset 0 1px 1px rgba(0,0,0,0.05)}
+.well blockquote,.resources-container .row>div>div blockquote,.resources-container .gform_fields>div>div blockquote{border-color:#ddd;border-color:rgba(0,0,0,0.15)}
 .well-lg{padding:24px;border-radius:6px}
 .well-sm{padding:9px;border-radius:3px}
 .close{float:right;font-size:27px;font-weight:bold;line-height:1;color:#000;text-shadow:0 1px 0 #fff;filter:alpha(opacity=20);opacity:.2}
@@ -1145,6 +1145,9 @@ button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-ap
 .top-links li:last-of-type{border:0;margin-right:0;padding-right:0}
 .top-links li a{color:#00549f;font-size:14px;font-weight:400;line-height:1;padding-top:5px;text-decoration:none}
 .top-links li a:active,.top-links li a:focus,.top-links li a:hover{text-decoration:underline}
+.resources-container .row,.resources-container .gform_fields{-ms-flex-line-pack:justify;align-content:space-between;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.resources-container .row>div:first-of-type h4,.resources-container .gform_fields>div:first-of-type h4{margin-bottom:15px}
+.resources-container .row>div>div,.resources-container .gform_fields>div>div{min-height:100%}
 header:not([class]){background-color:#fff;border-bottom:1px solid #00549f}
 .navbar{border-radius:0;margin-bottom:0}
 .navbar-default{background:transparent;border:0}
@@ -1195,14 +1198,14 @@ figure img{height:auto;width:100%}
 figure figcaption.wp-caption-text{font-size:15px;font-style:italic;font-weight:300;padding-top:5px}
 img.aligncenter,img.alignleft,img.alignnone,img.alignright{height:auto;margin:0 0 20px;width:100%}
 img.aligncenter.headshot,img.alignleft.headshot,img.alignnone.headshot,img.alignright.headshot{margin:0 0 20px 20px;width:50%}
-article ol:not([class]),aside+div:not(.widget-title) ol:not([class]),aside ol:not([class]),.well ol:not([class]){display:table;margin:0 0 13px 0 !important;padding:0}
-article ol:not([class]) li,aside+div:not(.widget-title) ol:not([class]) li,aside ol:not([class]) li,.well ol:not([class]) li{counter-increment:table-ol;display:table-row;float:none;font-weight:300;list-style:none}
-article ol:not([class]) li:before,aside+div:not(.widget-title) ol:not([class]) li:before,aside ol:not([class]) li:before,.well ol:not([class]) li:before{content:counter(table-ol) ".";display:table-cell;padding-right:10px;text-align:right}
-article ol:not([class]):last-child,aside+div:not(.widget-title) ol:not([class]):last-child,aside ol:not([class]):last-child,.well ol:not([class]):last-child{margin:0 0 0 0 !important}
-article ul:not([class]),aside+div:not(.widget-title) ul:not([class]),aside ul:not([class]),.well ul:not([class]){display:table;margin:0 0 13px 0 !important;padding:0}
-article ul:not([class]) li,aside+div:not(.widget-title) ul:not([class]) li,aside ul:not([class]) li,.well ul:not([class]) li{display:table-row;float:none !important;font-weight:300;list-style:none}
-article ul:not([class]) li:before,aside+div:not(.widget-title) ul:not([class]) li:before,aside ul:not([class]) li:before,.well ul:not([class]) li:before{content:"\25AA";display:table-cell;padding-right:10px}
-article ul:not([class]):last-child,aside+div:not(.widget-title) ul:not([class]):last-child,aside ul:not([class]):last-child,.well ul:not([class]):last-child{margin:0 0 0 0 !important}
+article ol:not([class]),aside+div:not(.widget-title) ol:not([class]),aside ol:not([class]),.well ol:not([class]),.resources-container .row>div>div ol:not([class]),.resources-container .gform_fields>div>div ol:not([class]){display:table;margin:0 0 13px 0 !important;padding:0}
+article ol:not([class]) li,aside+div:not(.widget-title) ol:not([class]) li,aside ol:not([class]) li,.well ol:not([class]) li,.resources-container .row>div>div ol:not([class]) li,.resources-container .gform_fields>div>div ol:not([class]) li{counter-increment:table-ol;display:table-row;float:none;font-weight:300;list-style:none}
+article ol:not([class]) li:before,aside+div:not(.widget-title) ol:not([class]) li:before,aside ol:not([class]) li:before,.well ol:not([class]) li:before,.resources-container .row>div>div ol:not([class]) li:before,.resources-container .gform_fields>div>div ol:not([class]) li:before{content:counter(table-ol) ".";display:table-cell;padding-right:10px;text-align:right}
+article ol:not([class]):last-child,aside+div:not(.widget-title) ol:not([class]):last-child,aside ol:not([class]):last-child,.well ol:not([class]):last-child,.resources-container .row>div>div ol:not([class]):last-child,.resources-container .gform_fields>div>div ol:not([class]):last-child{margin:0 0 0 0 !important}
+article ul:not([class]),aside+div:not(.widget-title) ul:not([class]),aside ul:not([class]),.well ul:not([class]),.resources-container .row>div>div ul:not([class]),.resources-container .gform_fields>div>div ul:not([class]){display:table;margin:0 0 13px 0 !important;padding:0}
+article ul:not([class]) li,aside+div:not(.widget-title) ul:not([class]) li,aside ul:not([class]) li,.well ul:not([class]) li,.resources-container .row>div>div ul:not([class]) li,.resources-container .gform_fields>div>div ul:not([class]) li{display:table-row;float:none !important;font-weight:300;list-style:none}
+article ul:not([class]) li:before,aside+div:not(.widget-title) ul:not([class]) li:before,aside ul:not([class]) li:before,.well ul:not([class]) li:before,.resources-container .row>div>div ul:not([class]) li:before,.resources-container .gform_fields>div>div ul:not([class]) li:before{content:"\25AA";display:table-cell;padding-right:10px}
+article ul:not([class]):last-child,aside+div:not(.widget-title) ul:not([class]):last-child,aside ul:not([class]):last-child,.well ul:not([class]):last-child,.resources-container .row>div>div ul:not([class]):last-child,.resources-container .gform_fields>div>div ul:not([class]):last-child{margin:0 0 0 0 !important}
 .text-columns,.list--multi-col{-webkit-column-count:1;-moz-column-count:1;column-count:1;margin-bottom:13px;padding:0}
 .text-columns li,.list--multi-col li{display:block;font-weight:300;list-style:none;margin:0 !important;width:100%}
 .facilities{-ms-flex-line-pack:justify;align-content:space-between;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;flex-flow:row wrap;margin:0;padding:0}
@@ -1234,12 +1237,12 @@ article ul:not([class]):last-child,aside+div:not(.widget-title) ul:not([class]):
 main header h1{margin-top:0}
 p,ul,ol{font-weight:300}
 p a,ul a,ol a{font-weight:600}
-.well{font-weight:300}
-.well h2,.well h3,.well .tribe-common .tribe-common-h4,.tribe-common .well .tribe-common-h4,.well .tribe-common .tribe-common-h3,.tribe-common .well .tribe-common-h3{margin-top:0}
-.well p:last-child{margin-bottom:0 !important}
-.well.translucent-well{background:#f5f5f5;background:rgba(245,245,245,0.8)}
-.well.half-left,.well.half-right{float:none;margin:20px 0 0 0;width:100%}
-.well.half-left{float:left;margin:0 20px 20px 0;width:50%}
+.well,.resources-container .row>div>div,.resources-container .gform_fields>div>div{font-weight:300}
+.well h2,.resources-container .row>div>div h2,.resources-container .gform_fields>div>div h2,.well h3,.resources-container .row>div>div h3,.resources-container .gform_fields>div>div h3,.well .tribe-common .tribe-common-h4,.tribe-common .well .tribe-common-h4,.resources-container .row>div>div .tribe-common .tribe-common-h4,.tribe-common .resources-container .row>div>div .tribe-common-h4,.resources-container .gform_fields>div>div .tribe-common .tribe-common-h4,.tribe-common .resources-container .gform_fields>div>div .tribe-common-h4,.well .tribe-common .tribe-common-h3,.tribe-common .well .tribe-common-h3,.resources-container .row>div>div .tribe-common .tribe-common-h3,.tribe-common .resources-container .row>div>div .tribe-common-h3,.resources-container .gform_fields>div>div .tribe-common .tribe-common-h3,.tribe-common .resources-container .gform_fields>div>div .tribe-common-h3{margin-top:0}
+.well p:last-child,.resources-container .row>div>div p:last-child,.resources-container .gform_fields>div>div p:last-child{margin-bottom:0 !important}
+.well.translucent-well,.resources-container .row>div>div.translucent-well,.resources-container .gform_fields>div>div.translucent-well{background:#f5f5f5;background:rgba(245,245,245,0.8)}
+.well.half-left,.resources-container .row>div>div.half-left,.resources-container .gform_fields>div>div.half-left,.well.half-right,.resources-container .row>div>div.half-right,.resources-container .gform_fields>div>div.half-right{float:none;margin:20px 0 0 0;width:100%}
+.well.half-left,.resources-container .row>div>div.half-left,.resources-container .gform_fields>div>div.half-left{float:left;margin:0 20px 20px 0;width:50%}
 p a{font-weight:600}
 p a:active,p a:focus,p a:hover{text-decoration:underline}
 .blind-list,.list--block-display{margin:0;padding:0 0 13px}
@@ -1251,8 +1254,8 @@ p a:active,p a:focus,p a:hover{text-decoration:underline}
 article small,aside+div:not(.widget-title) small{font-weight:300}
 article small a,aside+div:not(.widget-title) small a{font-weight:600}
 article small ~ h3,aside+div:not(.widget-title) small ~ h3,article .tribe-common small ~ .tribe-common-h4,.tribe-common article small ~ .tribe-common-h4,aside+div:not(.widget-title) .tribe-common small ~ .tribe-common-h4,.tribe-common aside+div:not(.widget-title) small ~ .tribe-common-h4,article .tribe-common small ~ .tribe-common-h3,.tribe-common article small ~ .tribe-common-h3,aside+div:not(.widget-title) .tribe-common small ~ .tribe-common-h3,.tribe-common aside+div:not(.widget-title) small ~ .tribe-common-h3{margin-bottom:0}
-article .well>h2:first-of-type,aside+div:not(.widget-title) .well>h2:first-of-type,article .well>h3:first-of-type,aside+div:not(.widget-title) .well>h3:first-of-type,article .tribe-common .well>.tribe-common-h4:first-of-type,.tribe-common article .well>.tribe-common-h4:first-of-type,aside+div:not(.widget-title) .tribe-common .well>.tribe-common-h4:first-of-type,.tribe-common aside+div:not(.widget-title) .well>.tribe-common-h4:first-of-type,article .tribe-common .well>.tribe-common-h3:first-of-type,.tribe-common article .well>.tribe-common-h3:first-of-type,aside+div:not(.widget-title) .tribe-common .well>.tribe-common-h3:first-of-type,.tribe-common aside+div:not(.widget-title) .well>.tribe-common-h3:first-of-type{margin-top:0}
-article .well p:last-of-type,aside+div:not(.widget-title) .well p:last-of-type,article .well p:only-of-type,aside+div:not(.widget-title) .well p:only-of-type{margin-bottom:0}
+article .well>h2:first-of-type,aside+div:not(.widget-title) .well>h2:first-of-type,article .resources-container .row>div>div>h2:first-of-type,.resources-container article .row>div>div>h2:first-of-type,aside+div:not(.widget-title) .resources-container .row>div>div>h2:first-of-type,.resources-container aside+div:not(.widget-title) .row>div>div>h2:first-of-type,article .resources-container .gform_fields>div>div>h2:first-of-type,.resources-container article .gform_fields>div>div>h2:first-of-type,aside+div:not(.widget-title) .resources-container .gform_fields>div>div>h2:first-of-type,.resources-container aside+div:not(.widget-title) .gform_fields>div>div>h2:first-of-type,article .well>h3:first-of-type,aside+div:not(.widget-title) .well>h3:first-of-type,article .resources-container .row>div>div>h3:first-of-type,.resources-container article .row>div>div>h3:first-of-type,aside+div:not(.widget-title) .resources-container .row>div>div>h3:first-of-type,.resources-container aside+div:not(.widget-title) .row>div>div>h3:first-of-type,article .resources-container .gform_fields>div>div>h3:first-of-type,.resources-container article .gform_fields>div>div>h3:first-of-type,aside+div:not(.widget-title) .resources-container .gform_fields>div>div>h3:first-of-type,.resources-container aside+div:not(.widget-title) .gform_fields>div>div>h3:first-of-type,article .tribe-common .well>.tribe-common-h4:first-of-type,.tribe-common article .well>.tribe-common-h4:first-of-type,aside+div:not(.widget-title) .tribe-common .well>.tribe-common-h4:first-of-type,.tribe-common aside+div:not(.widget-title) .well>.tribe-common-h4:first-of-type,article .resources-container .tribe-common .row>div>div>.tribe-common-h4:first-of-type,.tribe-common article .resources-container .row>div>div>.tribe-common-h4:first-of-type,.resources-container article .tribe-common .row>div>div>.tribe-common-h4:first-of-type,.tribe-common .resources-container article .row>div>div>.tribe-common-h4:first-of-type,aside+div:not(.widget-title) .resources-container .tribe-common .row>div>div>.tribe-common-h4:first-of-type,.tribe-common aside+div:not(.widget-title) .resources-container .row>div>div>.tribe-common-h4:first-of-type,.resources-container aside+div:not(.widget-title) .tribe-common .row>div>div>.tribe-common-h4:first-of-type,.tribe-common .resources-container aside+div:not(.widget-title) .row>div>div>.tribe-common-h4:first-of-type,article .resources-container .tribe-common .gform_fields>div>div>.tribe-common-h4:first-of-type,.tribe-common article .resources-container .gform_fields>div>div>.tribe-common-h4:first-of-type,.resources-container article .tribe-common .gform_fields>div>div>.tribe-common-h4:first-of-type,.tribe-common .resources-container article .gform_fields>div>div>.tribe-common-h4:first-of-type,aside+div:not(.widget-title) .resources-container .tribe-common .gform_fields>div>div>.tribe-common-h4:first-of-type,.tribe-common aside+div:not(.widget-title) .resources-container .gform_fields>div>div>.tribe-common-h4:first-of-type,.resources-container aside+div:not(.widget-title) .tribe-common .gform_fields>div>div>.tribe-common-h4:first-of-type,.tribe-common .resources-container aside+div:not(.widget-title) .gform_fields>div>div>.tribe-common-h4:first-of-type,article .tribe-common .well>.tribe-common-h3:first-of-type,.tribe-common article .well>.tribe-common-h3:first-of-type,aside+div:not(.widget-title) .tribe-common .well>.tribe-common-h3:first-of-type,.tribe-common aside+div:not(.widget-title) .well>.tribe-common-h3:first-of-type,article .resources-container .tribe-common .row>div>div>.tribe-common-h3:first-of-type,.tribe-common article .resources-container .row>div>div>.tribe-common-h3:first-of-type,.resources-container article .tribe-common .row>div>div>.tribe-common-h3:first-of-type,.tribe-common .resources-container article .row>div>div>.tribe-common-h3:first-of-type,aside+div:not(.widget-title) .resources-container .tribe-common .row>div>div>.tribe-common-h3:first-of-type,.tribe-common aside+div:not(.widget-title) .resources-container .row>div>div>.tribe-common-h3:first-of-type,.resources-container aside+div:not(.widget-title) .tribe-common .row>div>div>.tribe-common-h3:first-of-type,.tribe-common .resources-container aside+div:not(.widget-title) .row>div>div>.tribe-common-h3:first-of-type,article .resources-container .tribe-common .gform_fields>div>div>.tribe-common-h3:first-of-type,.tribe-common article .resources-container .gform_fields>div>div>.tribe-common-h3:first-of-type,.resources-container article .tribe-common .gform_fields>div>div>.tribe-common-h3:first-of-type,.tribe-common .resources-container article .gform_fields>div>div>.tribe-common-h3:first-of-type,aside+div:not(.widget-title) .resources-container .tribe-common .gform_fields>div>div>.tribe-common-h3:first-of-type,.tribe-common aside+div:not(.widget-title) .resources-container .gform_fields>div>div>.tribe-common-h3:first-of-type,.resources-container aside+div:not(.widget-title) .tribe-common .gform_fields>div>div>.tribe-common-h3:first-of-type,.tribe-common .resources-container aside+div:not(.widget-title) .gform_fields>div>div>.tribe-common-h3:first-of-type{margin-top:0}
+article .well p:last-of-type,aside+div:not(.widget-title) .well p:last-of-type,article .resources-container .row>div>div p:last-of-type,.resources-container article .row>div>div p:last-of-type,aside+div:not(.widget-title) .resources-container .row>div>div p:last-of-type,.resources-container aside+div:not(.widget-title) .row>div>div p:last-of-type,article .resources-container .gform_fields>div>div p:last-of-type,.resources-container article .gform_fields>div>div p:last-of-type,aside+div:not(.widget-title) .resources-container .gform_fields>div>div p:last-of-type,.resources-container aside+div:not(.widget-title) .gform_fields>div>div p:last-of-type,article .well p:only-of-type,aside+div:not(.widget-title) .well p:only-of-type,article .resources-container .row>div>div p:only-of-type,.resources-container article .row>div>div p:only-of-type,aside+div:not(.widget-title) .resources-container .row>div>div p:only-of-type,.resources-container aside+div:not(.widget-title) .row>div>div p:only-of-type,article .resources-container .gform_fields>div>div p:only-of-type,.resources-container article .gform_fields>div>div p:only-of-type,aside+div:not(.widget-title) .resources-container .gform_fields>div>div p:only-of-type,.resources-container aside+div:not(.widget-title) .gform_fields>div>div p:only-of-type{margin-bottom:0}
 article blockquote,aside+div:not(.widget-title) blockquote{border-left:10px solid #eee}
 article blockquote p:first-of-type,aside+div:not(.widget-title) blockquote p:first-of-type{margin-top:0}
 article blockquote footer,aside+div:not(.widget-title) blockquote footer{background:transparent !important;border:0 !important;font-weight:300;margin:0 !important;padding:0 !important}
@@ -1285,6 +1288,8 @@ article .btn,aside+div:not(.widget-title) .btn,article .tribe-common .tribe-comm
 .tribe-organizer-tel,.tribe-organizer-email{font-weight:300}
 .tribe-events-calendar-month__day--current{background-color:#e6f3ff}
 .gform_fields .gfield{margin-bottom:15px}
+.gform_fields .gfield .gfield_description{font-size:15px;font-weight:300;margin-top:5px}
+.gform_fields .gfield .gfield_description.validation_message{padding:5px}
 .gform_fields .gfield.gfield_visibility_hidden{display:none}
 .gform_fields .gfield.hidden_label label.gfield_label{display:none}
 .gform_fields .gfield>label{font-size:15px;font-weight:600;margin-bottom:0;margin-bottom:0}
@@ -1297,20 +1302,11 @@ article .btn,aside+div:not(.widget-title) .btn,article .tribe-common .tribe-comm
 .gform_fields .gfield input:not([type='radio']):not([type='checkbox'])::placeholder,.gform_fields .gfield select::placeholder,.gform_fields .gfield textarea::placeholder{font-weight:300 !important}
 .gform_fields .gfield.gsection h2{margin:13px 0 0}
 .gform_fields .gfield.gsection:not(:first-of-type) h2{border-top:1px solid #eee;padding-top:28px}
+.ginput_container_radio ul.gfield_radio,.ginput_container_radio ul.gfield_checkbox,.ginput_container_checkbox ul.gfield_radio,.ginput_container_checkbox ul.gfield_checkbox{list-style:none;margin:0;padding:0}
+.ginput_container_radio ul.gfield_radio li label,.ginput_container_radio ul.gfield_checkbox li label,.ginput_container_checkbox ul.gfield_radio li label,.ginput_container_checkbox ul.gfield_checkbox li label{font-weight:300}
+.ginput_container_radio ul.gfield_radio li label input,.ginput_container_radio ul.gfield_checkbox li label input,.ginput_container_checkbox ul.gfield_radio li label input,.ginput_container_checkbox ul.gfield_checkbox li label input{float:left;margin-right:13px}
 .gfield_html p{margin-bottom:0}
 .gform_button{margin-bottom:15px}
-.gfield_checkbox{list-style-type:none;margin:0;padding:0}
-.gfield_checkbox li:not(:only-of-type),.gfield_checkbox li:not(:last-of-type){margin-bottom:10px}
-.gfield_checkbox label{cursor:pointer;font-size:18px;font-weight:300;margin-bottom:0;padding-left:35px;position:relative}
-.gfield_checkbox label:after{clear:both;content:'';display:table}
-.gfield_checkbox label input[type='checkbox']{display:none}
-.gfield_checkbox label input[type='checkbox']+.cr{left:0;position:absolute;top:0}
-.gfield_checkbox label input[type='checkbox']+.cr>.cr-icon{opacity:0;-webkit-transform:scale(3) rotateZ(-20deg);transform:scale(3) rotateZ(-20deg);-webkit-transition:all 400ms ease-in-out;transition:all 400ms ease-in-out}
-.gfield_checkbox label input[type='checkbox']:checked+.cr{background:#00549f;color:#fff}
-.gfield_checkbox label input[type='checkbox']:checked+.cr>.cr-icon{opacity:1;-webkit-transform:scale(1) rotateZ(0);transform:scale(1) rotateZ(0)}
-.gfield_checkbox label input[type='checkbox']:disabled+.cr>.cr-icon{opacity:.5}
-.gfield_checkbox .cr{border:2px solid #00549f;border-radius:3px;display:inline-block;float:left;height:22px;margin-right:13px;position:relative;width:22px}
-.gfield_checkbox .cr .cr-icon{font-size:.8em;left:15%;line-height:0;position:absolute;top:50%}
 table{margin-bottom:26px;max-width:100%;min-height:.01%;overflow-x:auto;width:100%}
 table>thead>tr>th,table>thead>tr>td,table>tbody>tr>th,table>tbody>tr>td,table>tfoot>tr>th,table>tfoot>tr>td{border-top:1px solid #ddd;line-height:1.46;padding:8px;vertical-align:top}
 table>thead>tr>td{border-bottom:2px solid #ddd;color:#00549f;font-weight:500;vertical-align:bottom}
@@ -1379,7 +1375,7 @@ nav .nav-links .page-numbers:not(.current):not(.next):not(.prev):active,nav .nav
 .courses-results-list li .course-tax p:last-of-type{margin-bottom:0}
 .courses-results-list li .course-desc{padding:15px}
 .user-msg{width:auto}
-.user-msg .text-danger,.user-msg .text-success{margin:15px 0;padding:15px;text-align:center}
+.user-msg .text-danger,.user-msg .gform_fields .gfield .gfield_description.validation_message,.gform_fields .gfield .user-msg .gfield_description.validation_message,.user-msg .text-success{margin:15px 0;padding:15px;text-align:center}
 .course-desc p{border-top:1px solid #eee;margin-bottom:0;padding-top:15px}
 .course-terms{border-bottom:1px solid #eee;border-top:1px solid #eee;margin-bottom:15px}
 .course-terms li{margin:15px 30px 15px 0 !important}
@@ -1576,8 +1572,8 @@ img.alignleft.headshot{width:30%}
 .text-columns li,.list--multi-col li{display:block;font-weight:300;list-style:none;margin:0 !important;width:100%}
 .four-column li,.three-column li,.two-column li{margin:0 30px 20px 0;width:345px}
 .four-column li:nth-of-type(2n),.three-column li:nth-of-type(2n),.two-column li:nth-of-type(2n){margin:0 0 20px 0}
-.well.half-left{float:left;margin:0 20px 20px 0;width:50%}
-.well.half-right{float:right;margin:0 0 20px 20px;width:50%}
+.well.half-left,.resources-container .row>div>div.half-left,.resources-container .gform_fields>div>div.half-left{float:left;margin:0 20px 20px 0;width:50%}
+.well.half-right,.resources-container .row>div>div.half-right,.resources-container .gform_fields>div>div.half-right{float:right;margin:0 0 20px 20px;width:50%}
 .jumbotron{background-position:left top}
 .jumbotron.upper-masthead .row .masthead-copy-area,.jumbotron.upper-masthead .gform_fields .masthead-copy-area{display:block}
 .jumbotron.landing-masthead .row .masthead-quick-links,.jumbotron.landing-masthead .gform_fields .masthead-quick-links{display:block}

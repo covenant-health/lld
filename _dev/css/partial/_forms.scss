@@ -5,6 +5,22 @@
 	.gfield {
 		margin-bottom: 15px;
 
+		&.gfield_error {
+			@extend .has-error;
+		}
+
+		.gfield_description {
+			font-size: $font-size-small;
+			font-weight: 300;
+			margin-top: 5px;
+
+			&.validation_message {
+				@extend .text-danger;
+				@extend .bg-danger;
+				padding: 5px;
+			}
+		}
+
 		&.gfield_visibility_hidden {
 			display: none;
 		}
@@ -54,6 +70,27 @@
 	}
 }
 
+.ginput_container_radio,
+.ginput_container_checkbox {
+	ul.gfield_radio,
+	ul.gfield_checkbox {
+		list-style: none;
+		margin:     0;
+		padding:    0;
+
+		li {
+			label {
+				font-weight: 300;
+
+				input {
+					float: left;
+					margin-right: ceil($line-height-computed / 2);
+				}
+			}
+		}
+	}
+}
+
 .gfield_html {
 	p {
 		margin-bottom: 0;
@@ -64,87 +101,4 @@
 	@extend .btn;
 	@extend .btn-primary;
 	margin-bottom: 15px;
-}
-
-.gfield_checkbox {
-	list-style-type: none;
-	margin:          0;
-	padding:         0;
-
-	li {
-		&:not(:only-of-type),
-		&:not(:last-of-type) {
-			margin-bottom: 10px;
-		}
-	}
-
-	label {
-		cursor:        pointer;
-		font-size:     $font-size-base;
-		font-weight:   300;
-		margin-bottom: 0;
-		padding-left:  35px;
-		position:      relative;
-
-		&:after {
-			clear:   both;
-			content: '';
-			display: table;
-		}
-
-		input[type='checkbox'] {
-			display: none;
-
-			+ .cr {
-				left:     0;
-				position: absolute;
-				top:      0;
-
-				> .cr-icon {
-					opacity:    0;
-					transform:  scale(3) rotateZ(-20deg);
-					transition: all $speed $easing;
-				}
-			}
-
-			&:checked {
-				+ .cr {
-					background: $brand-primary;
-					color:      #ffffff;
-
-					> .cr-icon {
-						opacity:   1;
-						transform: scale(1) rotateZ(0deg);
-					}
-				}
-			}
-
-			&:disabled {
-				+ .cr {
-					> .cr-icon {
-						opacity: .5;
-					}
-				}
-			}
-		}
-	}
-
-	.cr {
-		border:        2px solid $brand-primary;
-		border-radius: $border-radius-small;
-		display:       inline-block;
-		float:         left;
-		height:        $font-size-large;
-		margin-right:  ceil(($line-height-computed / 2));
-		position:      relative;
-		width:         $font-size-large;
-
-		.cr-icon {
-			font-size:   .8em;
-			left:        15%;
-			line-height: 0;
-			position:    absolute;
-			top:         50%;
-		}
-	}
 }

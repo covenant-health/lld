@@ -1,0 +1,22 @@
+.resources-container {
+	.row {
+		align-content:   space-between;
+		align-items:     stretch;
+		display:         flex;
+		flex-flow:       row nowrap;
+		justify-content: space-between;
+
+		> div {
+			&:first-of-type {
+				h4 {
+					margin-bottom: 15px;
+				}
+			}
+
+			> div {
+				@extend .well;
+				min-height: 100%;
+			}
+		}
+	}
+}

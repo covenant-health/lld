@@ -46,7 +46,7 @@ $logo_img       = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 				<li class="visible-xs">
 					<form class="navbar-form" role="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<div class="input-group">
-							<input name="s" id="s" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search',''); ?>">
+							<input name="s" id="s" autocomplete="off" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search',''); ?>">
 							<span class="input-group-btn">
 								<button class="btn btn-primary" type="submit">Go</button>
 							</span>
@@ -59,7 +59,7 @@ $logo_img       = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 						<li>
 							<form class="navbar-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<div class="input-group">
-									<input name="s" id="s" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search',''); ?>">
+									<input name="s" id="s" type="text" autocomplete="off" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search',''); ?>">
 									<span class="input-group-btn">
 										<button class="btn btn-primary" type="submit">Go</button>
 									</span>

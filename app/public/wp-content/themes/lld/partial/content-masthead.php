@@ -82,7 +82,7 @@ $page_class = is_front_page() ? 'upper-masthead' : 'landing-masthead';
 					<div class="masthead-search">
 						<div class="form-group">
 							<label for="search" class="sr-only">Find your next course in…</label>
-							<input type="text" class="form-control" name="search" id="search"
+							<input type="text" class="form-control" name="search" autocomplete="off" id="search"
 							       placeholder="Find your next course in…">
 						</div>
 						<div class="form-group">
