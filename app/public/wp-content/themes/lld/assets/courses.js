@@ -21,7 +21,7 @@
 		}
 
 		let updatedUrl = url + queryString;
-
+		console.log( updatedUrl );
 		$.ajax( {
 			contentType: 'application/json; charset=utf-8',
 			dataType: 'json',
@@ -99,7 +99,7 @@
 		e.preventDefault();
 		$( loading ).show();
 
-		let filters = $( '#search, #location, #program, #path' ).serialize().replace( /&?[^=&]+=(&|$)/g, '' );
+		let filters = $( '#search, #location, #program, #path' ).serialize();
 
 		if ( 1 > filters.length || ! typeof ( filters ) ) {
 			userMsg.show().addClass( 'bg-danger text-danger' ).text( 'Please enter a search term or select a filter above, then resubmit the form.' );
@@ -126,7 +126,7 @@
 		loading.show();
 		queryString = '';
 
-		$( '#specialty, #location, #path' ).prop( 'selectedIndex', 0 );
+		$( '#program, #location, #path' ).prop( 'selectedIndex', 0 );
 		$( '#search' ).val( '' );
 
 		getData();

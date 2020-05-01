@@ -10,6 +10,11 @@
  */
 ?>
 <article <?php post_class( 'col-xs-12' ); ?>>
+	<div class="row page-content">
+		<div class="col-xs-12">
+			<?php the_content(); ?>
+		</div>
+	</div>
 	<div class="course-search">
 		<div class="form-group search-input">
 			<label for="search" class="sr-only">Search for a course</label>
@@ -42,7 +47,7 @@
 		</div>
 		<div class="form-group program-select">
 			<label for="program" class="sr-only">Choose a Program</label>
-			<select name="trprogramack" id="program" class="form-control program-select">
+			<select name="program" id="program" class="form-control program-select">
 				<option value="" default>All programs</option>
 				<?php
 				$programs = get_terms(

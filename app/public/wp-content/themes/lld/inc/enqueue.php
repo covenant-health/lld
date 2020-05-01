@@ -85,7 +85,7 @@ add_action( 'wp_enqueue_scripts', 'css_js_enqueue');
 // Apply the theme's stylesheet to the visual editor
 function editor_styles() {
 
-	add_editor_style( 'editor-style.min.css' );
+	add_editor_style( trailingslashit( get_template_directory_uri() ) . 'assets/editor-style.css' );
 
 }
 add_action( 'init', 'editor_styles' );

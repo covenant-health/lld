@@ -55,24 +55,32 @@
 <aside class="col-xs-12 col-md-4">
 	<?php if ( get_field( 'enrollment_link' ) ) : ?>
 		<div class="enroll-cta">
-			<a href="<?php the_field( 'enrollment_link' ); ?>" class="btn btn-primary btn-enroll">Enroll for <?php the_title(); ?></a>
+			<a href="<?php the_field( 'enrollment_link' ); ?>" class="btn btn-primary btn-enroll">Enroll
+				for <?php the_title(); ?></a>
+		</div>
+	<?php endif; ?>
+	<?php if ( get_field( 'course_duration' ) ) : ?>
+		<div class="well course-duration">
+			<h3>Course Duration</h3>
+			<p><?php the_field( 'course_duration' ); ?></p>
 		</div>
 	<?php endif; ?>
 	<?php
 
 	$args = array(
-		'order'        => 'asc',
-		'orderby'      => 'date',
-		'post_type'    => 'course',
-		'post__not_in' => array( $post->ID ),
-		'tax_query'    => array(
-			array(
-				'taxonomy' => 'program',
-				'field'    => 'id',
-				'terms'    => wp_get_post_terms( $post->ID, 'program', array( 'fields' => 'ids' ) ),
-				'operator' => 'IN'
+			'order'          => 'asc',
+			'orderby'        => 'date',
+			'post_type'      => 'course',
+			'posts_per_page' => 3,
+			'post__not_in'   => array( $post->ID ),
+			'tax_query'      => array(
+					array(
+							'taxonomy' => 'program',
+							'field'    => 'id',
+							'terms'    => wp_get_post_terms( $post->ID, 'program', array( 'fields' => 'ids' ) ),
+							'operator' => 'IN'
+					),
 			),
-		),
 	);
 
 	$lookie_here = new WP_Query( $args );
@@ -87,5 +95,6 @@
 				</li>
 			<?php endwhile; ?>
 		</ul>
-	<?php endif; ?>
+	<?php endif;
+	wp_reset_postdata(); ?>
 </aside>

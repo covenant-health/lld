@@ -890,7 +890,7 @@ $highdpi: "(-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767p
 $color: $input-border-focus;
 $color-rgba: rgba(red($color), green($color), blue($color), .6);
 @mixin text-shadow {
-	text-shadow: 1px 1px 6px #000;
+	text-shadow: 1px 1px 2px rgba( 0, 0, 0, 0.5 );
 }
 
 // opacity

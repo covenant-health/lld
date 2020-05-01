@@ -1,12 +1,17 @@
 .resources-container {
-	.row {
+	.resource-row {
 		align-content:   space-between;
 		align-items:     stretch;
 		display:         flex;
-		flex-flow:       row nowrap;
+		flex-flow:       row wrap;
 		justify-content: space-between;
+		margin-left: -15px;
+		margin-right: -15px;
 
-		> div {
+		> .resource-col {
+			width: 100%;
+			padding: 0 15px;
+
 			&:first-of-type {
 				h4 {
 					margin-bottom: 15px;
@@ -16,6 +21,16 @@
 			> div {
 				@extend .well;
 				min-height: 100%;
+			}
+		}
+	}
+}
+
+@media #{$small} {
+	.resources-container {
+		.resource-row {
+			> .resource-col {
+				width: 33.33333%;
 			}
 		}
 	}

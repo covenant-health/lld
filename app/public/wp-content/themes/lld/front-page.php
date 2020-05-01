@@ -26,8 +26,8 @@ get_header(); ?>
 
 	<div class="container resources-container">
 
-		<div class="row">
-			<div class="col-md-4">
+		<div class="resource-row">
+			<div class="resource-col">
 				<div>
 					<?php $services = get_field( 'services' );
 					if ( $services ) : ?>
@@ -37,7 +37,7 @@ get_header(); ?>
 							'order'          => 'rand',
 							'post_type'      => 'course',
 							'post_status'    => 'publish',
-							'posts_per_page' => 3,
+							'posts_per_page' => 4,
 							'meta_key'       => 'featured_course',
 							'meta_value'     => 1
 
@@ -48,6 +48,7 @@ get_header(); ?>
 						if ( $feat_courses->have_posts() ) : while ( $feat_courses->have_posts() ) : $feat_courses->the_post(); ?>
 							<h4><a href="<?php the_permalink(); ?>"
 							       title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>
+							<?php show_thumbnail(); ?>
 							<?php the_excerpt(); ?>
 						<?php endwhile; else : ?>
 							<p>No posts.</p>
@@ -57,7 +58,7 @@ get_header(); ?>
 				</div>
 			</div> <!-- /services-col -->
 
-			<div class="col-md-4">
+			<div class="resource-col">
 				<div>
 					<?php $patients = get_field( 'patients' );
 					if ( $patients ) : ?>
@@ -79,6 +80,7 @@ get_header(); ?>
 
 						<h4><a href="<?php the_permalink(); ?>"
 						       title="Read <?php the_title(); ?>"><?php the_title(); ?></a></h4>
+						<?php show_thumbnail(); ?>
 						<p class="small">Posted on
 							<time
 								datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date( 'F j, Y' ); ?></time>
@@ -94,7 +96,7 @@ get_header(); ?>
 				</div>
 			</div> <!-- /account-col -->
 
-			<div class="col-md-4">
+			<div class="resource-col">
 				<div>
 					<?php $updates = get_field( 'updates' );
 					if ( $updates ) : ?>
@@ -116,8 +118,10 @@ get_header(); ?>
 
 						<h4><a href="<?php the_permalink(); ?>"
 						       title="Read <?php the_title(); ?>"><?php the_title(); ?></a></h4>
-						<p class="small">Posted on <time datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date( 'F j, Y' ); ?></time>
-						</p>
+						<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
+							<?php show_thumbnail(); ?>
+						</a>
+						<p class="small">Posted on <time datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date( 'F j, Y' ); ?></time></p>
 						<?php the_excerpt(); ?>
 
 					<?php endwhile; else : ?>
@@ -132,7 +136,20 @@ get_header(); ?>
 
 	</div> <!-- /container.resources-container -->
 
-	<!--<div class="jumbotron lower-masthead" style="background-image: url(<?php /*the_field( 'lower_hero_image' ) */ ?>)">
+	<?php if( get_field( 'call_to_action' ) ) :
+		$image = get_field( 'cta_background' ) ? get_field( 'cta_background' ) : get_bloginfo( 'stylesheet_directory' ) . '/img/default-masthead.jpg';
+	?>
+		<div class="jumbotron call-to-action" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%), url(<?php echo $image; ?>);">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-md-offset-6">
+						<?php the_field( 'call_to_action' ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+	<!--<div class="jumbotron call-to-action" style="background-image: url(<?php /*the_field( 'lower_hero_image' ) */ ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8 col-md-6">
