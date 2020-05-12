@@ -138,7 +138,7 @@ $( window ).on( 'resize', function mastheadSize() {
 	var mqxs = window.matchMedia( 'screen and ( max-width: 767px )' );
 
 	if ( mqxs.matches === false || typeof mqxs.matches === undefined ) {
-		$( '.jumbotron.upper-masthead' ).css( 'padding-top', width * 0.265 - height );
+		$( '.jumbotron.upper-masthead' ).css( 'padding-top', width * 0.3 - height );
 		$( '.jumbotron.lower-masthead' ).css( 'padding-bottom', width * 0.43 - height );
 		$( '.jumbotron.landing-masthead' ).css( 'padding-top', width * 0.329 - height );
 		$( '.jumbotron.landing-masthead' ).css( 'text-align', 'right' );

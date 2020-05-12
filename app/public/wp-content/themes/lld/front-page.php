@@ -38,9 +38,12 @@ get_header(); ?>
 							'post_type'      => 'course',
 							'post_status'    => 'publish',
 							'posts_per_page' => 4,
-							'meta_key'       => 'featured_course',
-							'meta_value'     => 1
-
+							'meta_query'     => array(
+								array(
+										'key'   => 'featured_course',
+										'value' => 1
+								)
+						),
 						);
 
 						$feat_courses = new WP_Query( $args );

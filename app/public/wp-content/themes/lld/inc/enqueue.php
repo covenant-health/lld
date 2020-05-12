@@ -24,6 +24,7 @@ function css_js_enqueue() {
 	$css_path = trailingslashit( get_template_directory() ) . 'assets/main.min.css';
 	$vendor_path = trailingslashit( get_template_directory() ) . 'assets/vendor.min.js';
 	$courses_path = trailingslashit( get_template_directory() ) . 'assets/courses.js';
+	$fa_css_path = trailingslashit( get_template_directory() ) . 'assets/fa/all.min.css';
 
 	wp_enqueue_script(
 
@@ -43,6 +44,14 @@ function css_js_enqueue() {
 		filemtime($js_path),
 		true
 
+	);
+
+	wp_enqueue_style(
+		'fa_css',
+		trailingslashit( get_template_directory_uri() ) . 'assets/fa/all.min.css',
+		false,
+		filemtime($fa_css_path),
+		'all'
 	);
 
 	wp_enqueue_style(

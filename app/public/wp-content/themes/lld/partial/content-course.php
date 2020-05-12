@@ -49,6 +49,22 @@
 				</div>
 			<?php endif; ?>
 		</div>
+		<div class="col-xs-12">
+			<hr>
+			<p>
+				This is
+				<?php
+				$type = get_field( 'delivery_method');
+				if( $type['value'] !== 3 && $type['value'] !== 4 ) {
+					echo ' an ' . $type['label'] . ' ';
+				} else {
+					echo ' a ' . $type['label'] . ' ';
+				}
+				?>
+				course.
+			</p>
+			<hr>
+		</div>
 	</div>
 	<?php the_content(); ?>
 </article>
@@ -71,8 +87,14 @@
 			'order'          => 'asc',
 			'orderby'        => 'date',
 			'post_type'      => 'course',
-			'posts_per_page' => 3,
+			'posts_per_page' => 6,
 			'post__not_in'   => array( $post->ID ),
+			'meta_query'     => array(
+					array(
+							'key'   => 'related_courses',
+							'value' => 1
+					)
+			),
 			'tax_query'      => array(
 					array(
 							'taxonomy' => 'program',
@@ -89,10 +111,12 @@
 		<h3>Related Courses</h3>
 		<ul class="other-courses">
 			<?php while ( $lookie_here->have_posts() )  : $lookie_here->the_post() ?>
-				<li>
-					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-					<?php the_excerpt(); ?>
-				</li>
+				<div class="well">
+					<li>
+						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+						<?php the_excerpt(); ?>
+					</li>
+				</div>
 			<?php endwhile; ?>
 		</ul>
 	<?php endif;

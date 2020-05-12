@@ -4,6 +4,28 @@
 	background-size:     cover;
 	padding:             0;
 
+	h1,
+	h2 {
+		color:     #ffffff;
+		font-size: $font-size-h1;
+		margin:    0;
+		@include text-shadow;
+		text-align: center;
+	}
+
+	.add-content {
+		margin-top: $line-height-computed;
+
+		p {
+			color: #fff;
+
+			&:only-of-type,
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+
 	p {
 		&.front-page-cta {
 			color:      #ffffff;
@@ -26,31 +48,19 @@
 
 
 	&.upper-masthead {
-
-		.row {
+		> .row {
 			align-content:   space-between;
 			align-items:     flex-end;
 			display:         flex;
-			flex-flow:       row nowrap;
+			flex-flow:       column nowrap;
 			justify-content: space-between;
 			margin:          0 -15px;
 			padding:         0;
 
-			div {
-				&.fallback-title {
-					flex-basis: 100%;
-					margin:     ceil(($line-height-computed * 3)) 0 ceil(($line-height-computed * 1.25));
-					padding:    0 15px;
-					@include text-shadow;
-					text-align: center;
-
-					h1,
-					h2 {
-						color:     #ffffff;
-						font-size: $font-size-h1;
-						margin:    0;
-					}
-				}
+			> .col-xs-12 {
+				flex-basis: 100%;
+				margin:     ceil(($line-height-computed * 3)) 0 ceil(($line-height-computed * 1.25));
+				padding:    0 15px;
 			}
 
 			.masthead-copy-area {
@@ -84,14 +94,11 @@
 		background-position: left top;
 
 		&.upper-masthead {
-
-			.row {
-				div {
-					&.fallback-title {
-						h1,
-						h2 {
-							font-size: $jumbotron-heading-font-size;
-						}
+			> .row {
+				> .col-xs-12 {
+					h1,
+					h2 {
+						font-size: $jumbotron-heading-font-size;
 					}
 				}
 
@@ -105,19 +112,18 @@
 	.courses-search-col {
 		left:      50%;
 		transform: translateX(-50%);
+		margin-top: $line-height-computed;
 	}
 }
 
 @media #{$medium} {
 	.jumbotron {
 		&.upper-masthead {
-			.row {
-				div {
-					&.fallback-title {
-						h1,
-						h2 {
-							font-size: $jumbotron-heading-font-size;
-						}
+			> .row {
+				> .col-xs-12 {
+					h1,
+					h2 {
+						font-size: $jumbotron-heading-font-size;
 					}
 				}
 			}
@@ -128,13 +134,11 @@
 @media #{$medium} {
 	.jumbotron {
 		&.upper-masthead {
-			.row {
-				div {
-					&.fallback-title {
-						h1,
-						h2 {
-							font-size: $jumbotron-heading-font-size;
-						}
+			> .row {
+				> .col-xs-12 {
+					h1,
+					h2 {
+						font-size: $jumbotron-heading-font-size;
 					}
 				}
 			}
